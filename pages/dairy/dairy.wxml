@@ -1,0 +1,9 @@
+<view class="container">
+  <scroll-view class="scroll-view" scroll-y="true">
+  <view class="scroll-y" >
+    <view class="scroll-box" wx:for-items="{{scrolls}}" wx:key="name">
+      <view class="{{item.tag}}" style="color:#fff;border-radius: 25rpx; height:300rpx; width:300rpx">{{item.name}}</view>
+    </view>
+  </view>
+</scroll-view>
+</view>

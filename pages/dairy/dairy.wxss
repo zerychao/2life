@@ -1,0 +1,51 @@
+.container{
+  background-color:#2B293D;
+  height: 100%;
+  position:absolute;
+  top:0px;
+  left:0px;
+  right:0px;
+  bottom:0px;
+  z-index: -1;
+}
+.scroll-y {
+  display: flex;
+  flex-direction: column; 
+}
+.green
+{
+  display: flex;
+  align-items: center;
+  width: 400rpx;
+  height: 400rpx;
+  background: white;
+}
+.red
+{
+  display: flex;
+  align-items: center;
+  width: 400rpx;
+  height: 400rpx;
+  background: white;
+}
+.yellow
+{
+  display: flex;
+  align-items: center;
+  width: 400rpx;
+  height: 400rpx;
+  background: white;
+}
+.scroll-view{
+  height: 75%;
+  position:absolute;
+  top:50px;
+  left:150px;
+  right:30px;
+}
+.scroll-box{
+  width: 50%;
+  height: 60%;
+  border: 20rpx;
+  margin: 50rpx;
+}

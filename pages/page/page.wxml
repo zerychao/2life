@@ -1,0 +1,30 @@
+<!--page.wxml-->
+<view class="box">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" bindtap="contact"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <!-- 文本框 -->
+    <view class="dairybox">
+        <textarea class="dairytext" style="height:600rpx" 
+        focus placeholder=" What is going on today?" placeholder-style="color:#565273"
+        maxlength="-1"  cursor-spacing="0" />
+    </view>
+    <view class="dairy" style="display:flex; height:700rpx">
+      <button class="allDairy" bindtap="turnTopage"></button>
+      <scroll-view class="scrollview" scroll-x scroll-left="{{scroll_left}}">  
+      <view class="scroll-block" style="width:{{tab_tite_data.length*t_width}}rpx;">  
+        <view class="scroll-box" wx:for="{{tab_tite_data}}"> 
+          <view class="scrollID" data-current="{{index}}">
+            <text class="ID">{{item.name}} </text>
+          </view>
+           <view class="scroll"  style="background:{{item.color}};" data-current="{{index}}">{{item.name}} 
+           </view>  
+        </view>
+      </view>  
+      </scroll-view> 
+    </view>
+</view>

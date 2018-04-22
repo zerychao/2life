@@ -1,0 +1,15 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/page/page",
+    "pages/dairy/dairy",
+    "pages/contact/contact"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#2B293D",
+    "backgroudColor":"#2B293D",
+    "navigationBarTextStyle":"white"
+  }
+
+}

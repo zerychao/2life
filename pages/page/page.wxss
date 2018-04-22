@@ -1,0 +1,101 @@
+.box{
+  background-color: #2B293D;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+  font-family:"Avenir Next", Times, serif;
+  font-size:25rpx;
+}
+.dairybox{
+  background-color: #3d3a55;
+  width: 600rpx;
+  height: 600rpx;
+  padding:10rpx; 
+  border:5rpx solid gray; 
+  margin:30rpx;
+  margin-left:auto; 
+  margin-right:auto; 
+  border-radius: 4%;
+  box-shadow: 2px 2px 3px #000;
+}
+
+.dairytext{
+  color:azure;
+}
+
+.dairy{
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+.allDairy{
+  position: relative;
+  top:180rpx; 
+  width:60rpx;
+  height:50rpx;
+  font-size: 20rpx;
+  background-color:#3d3a55; 
+  color:#fff;
+  box-shadow: 1px 1px 1px #000;
+}
+
+.scrollview{
+  height:700rpx;
+  width:622rpx;
+  overflow:scroll;
+  margin: 0rpx;
+}
+
+.scroll-box{
+  height:100rpx;
+  width:200rpx;
+  padding: 10rpx; 
+  margin-bottom:10rpx;
+  display:inline-block; 
+  
+}
+
+.scrollID{
+  background-color: #3d3a55;
+  height: 50rpx;
+  width: 50rpx; 
+  border: 2rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  box-shadow: -1px -1px 3px #000;
+  display: flex;
+  justify-content: center; 
+  position: relative;
+  left:49rpx;
+}
+
+.ID{
+  text-align:center;
+  font-size: 30rpx;
+  color: #fff;
+}
+
+.scroll{
+  width:100%;
+  height:200rpx;
+  text-align:center;
+  font-size:30rpx;
+  line-height:60rpx;
+  color:#000;
+  display:inline-block;
+  border-radius: 5%; 
+}
