@@ -9,8 +9,9 @@
   </view>
   <!-- 文本框 -->
     <view class="dairybox">
-        <textarea class="dairytext" style="height:600rpx" 
-        focus placeholder=" What is going on today?" placeholder-style="color:#565273"
+        <textarea class="dairytitle" focus placeholder="What is going on today?"/>
+        <textarea class="dairytext" 
+        focus placeholder=" " placeholder-style="color:#565273"
         maxlength="-1"  cursor-spacing="0" />
     </view>
       <!-- <view class="dairy" style="display:flex; height:700rpx">

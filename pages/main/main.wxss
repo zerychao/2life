@@ -13,37 +13,60 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 125px;
+  position: absolute;
+  width: 100%;
+  height: 100px;
 }
 
 .userinfo-avatar {
-  width: 100rpx;
-  height: 100rpx;
-  margin: 20rpx;
+  width: 128rpx;
+  height: 128rpx;
   border-radius: 50%;
 }
 
 .userinfo-nickname {
   color: #aaa;
   font-family:"Avenir Next", Times, serif;
-  font-size:25rpx;
+  font-size:12px;
 }
-.dairybox{
-  background-color: #3d3a55;
-  width: 600rpx;
-  height: 600rpx;
-  padding:10rpx; 
-  border:5rpx solid gray; 
-  margin:30rpx;
-  margin-left:auto; 
-  margin-right:auto; 
-  border-radius: 4%;
-  box-shadow: 2px 2px 3px #000;
+.dairybox{ 
+  width: 670rpx;
+  height: 806rpx;
+  border-radius: 8px;
+  background-image: radial-gradient(circle at 50% 100%, #504c6f, #3d3a54);
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5);
+  position:absolute;
+  top:120px;
+  left: 20px;
+  right:20px;
 }
 
-.dairytext{
-  color:azure;
+.dairytitle{
+  width: 606rpx;
+  font-family: AvenirNext;
+  font-size: 24px;
   font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #5b577d;
+  border-bottom: solid #aaa;
+}
+.dairytext{
+  width: 606rpx;
+  font-family: AvenirNext;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #5b577d;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .dairy{
