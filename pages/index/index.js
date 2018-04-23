@@ -12,7 +12,7 @@ Page({
   //事件处理函数
   turnTolog: function(){
     wx.navigateTo({
-      url: '../page/page'
+      url: '../main/main'
     })
   },
   onLoad: function () {
