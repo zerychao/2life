@@ -1,2 +1,5 @@
 # 2life
-#dinyzhe
+
+# Contributors
+@zerychao
+@Diny-zhe
