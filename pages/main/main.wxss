@@ -1,11 +1,19 @@
-.box{
+.container{
   background-color: #2B293D;
+  height: 100%;
+  position:absolute;
+  top:0px;
+  left:0px;
+  right:0px;
+  bottom:0px;
+  z-index: -1;
 }
 
 .userinfo {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 125px;
 }
 
 .userinfo-avatar {
@@ -35,6 +43,7 @@
 
 .dairytext{
   color:azure;
+  font-weight: bold;
 }
 
 .dairy{
@@ -86,6 +95,7 @@
 .ID{
   text-align:center;
   font-size: 30rpx;
+  font-weight: bold;
   color: #fff;
 }
 
