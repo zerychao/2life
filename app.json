@@ -1,7 +1,7 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/page/page",
+    "pages/main/main",
     "pages/dairy/dairy",
     "pages/contact/contact"
   ],
