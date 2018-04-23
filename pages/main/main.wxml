@@ -1,5 +1,5 @@
 <!--page.wxml-->
-<view class="container">
+<view class="box">
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
