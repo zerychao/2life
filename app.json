@@ -1,9 +1,8 @@
 {
   "pages":[
-    "pages/index/index",
     "pages/main/main",
-    "pages/dairy/dairy",
-    "pages/contact/contact"
+    "pages/all_history/all_history",
+    "pages/pair_details/pair_details"
   ],
   "window":{
     "backgroundTextStyle":"light",

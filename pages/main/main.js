@@ -64,7 +64,7 @@ Page({
   },
   contact: function() {
     wx.navigateTo({
-      url: '../contact/contact'
+      url: '../pair_details/pair_details'
     })
   },
   //滑动 
@@ -101,7 +101,7 @@ Page({
   },
   turnTopage: function() {
     wx.navigateTo({
-      url: '../dairy/dairy'
+      url: '../all_history/all_history'
     })
   }
 })
