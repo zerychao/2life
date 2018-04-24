@@ -1,9 +1,25 @@
 <view class="container">
-  <scroll-view class="scroll-view" scroll-y="true">
-  <view class="scroll-y" >
-    <view class="scroll-box" wx:for-items="{{scrolls}}" wx:key="name">
-      <view class="{{item.tag}}" style="color:#fff;border-radius: 25rpx; height:300rpx; width:300rpx">{{item.name}}</view>
-    </view>
+<!-- 获取头像昵称 -->
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" bindtap="expandup"></image> 
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
   </view>
-</scroll-view>
+
+   <!-- <view class="dairyContainer"> -->
+       <!-- <scroll-view class="scrollview" scroll-y="true">
+        <view wx:for="{{daryList}}" wx:for-item="item" wx:for-index="idx">
+          <!-- <view class="dairyid"><text>{{idx}}</text></view> 
+          <view class="dairytitle"><text>{{item.title}}</text></view>
+        </view>
+      </scroll-view> --> 
+  <!-- </view>   -->
+         <view class="testy" wx:for="{{dairyPartList}}" wx:for-item="itemy" wx:for-index="idy">
+            <view class="testx" wx:for="{{itemy}}" wx:for-item="itemx" wx:for-index="idx">
+                <text style="width:20px;height:20px;">{{itemx.content}}</text>
+            </view>  
+        </view>  
+
 </view>

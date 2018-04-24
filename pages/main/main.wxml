@@ -3,7 +3,7 @@
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
-       <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" bindtap="contact"></image> 
+       <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" bindtap="expandup"></image> 
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
@@ -24,7 +24,7 @@
       <scroll-view class="scrollview" scroll-x="true">
         <block class="dairybox" wx:for="{{dairyList}}" wx:for-item="item" wx:for-index="idx">
           <view class="dairyTitleId">
-             <view class="id"><text>{{item.id}}</text></view>   
+             <view class="id"><text>{{dairyList.length-idx}}</text></view>   
              <view class="dairyTitle"><text>{{item.title}}</text></view>
              <view class="emotion">
               <view wx:if="{{item.emotion>1}}">蓝色</view>
@@ -34,5 +34,6 @@
         </block>
       </scroll-view>
      </view> 
-
+<!-- <详细日记按钮> -->
+    <!-- <img src="icon/Expand up.svg" class="Expand-up"/> -->
 </view>

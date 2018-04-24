@@ -1,47 +1,19 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+var dataObj = require("../../data/data.js")
 Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    toView: 'yellow',
-    scrollLeft: 0,
-    //滚动的数组
-    scrolls: [
-      {
-        name: '黄色',
-        tag: 'yellow',
-      },
-      {
-        name: '绿色',
-        tag: 'green',
-      },
-      {
-        name: '红色',
-        tag: 'red',
-      },
-      {
-        name: '黄色',
-        tag: 'yellow',
-      },
-      {
-        name: '绿色',
-        tag: 'green',
-      },
-      {
-        name: '红色',
-        tag: 'red',
-      },
-    ],
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+        hasUserInfo: true,
+        dairyPartList: dataObj.dairyPartList
       })
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -49,7 +21,8 @@ Page({
       app.userInfoReadyCallback = res => {
         this.setData({
           userInfo: res.userInfo,
-          hasUserInfo: true
+          hasUserInfo: true,
+          dairyPartList: dataObj.dairyPartList
         })
       }
     } else {
@@ -59,7 +32,8 @@ Page({
           app.globalData.userInfo = res.userInfo
           this.setData({
             userInfo: res.userInfo,
-            hasUserInfo: true
+            hasUserInfo: true,
+            dairyParList: dataObj.dairyPartList
           })
         }
       })
@@ -73,13 +47,4 @@ Page({
       hasUserInfo: true
     })
   },
-  upper: function (e) {
-    console.log('滚动到顶部')
-  },
-  lower: function (e) {
-    console.log('滚动到底部')
-  },
-  scroll: function (e) {
-    console.log(e)
-  }
 })

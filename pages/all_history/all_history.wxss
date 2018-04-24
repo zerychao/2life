@@ -8,44 +8,94 @@
   bottom:0px;
   z-index: -1;
 }
-.scroll-y {
+.userinfo {
   display: flex;
-  flex-direction: column; 
-}
-.green
-{
-  display: flex;
+  flex-direction: column;
   align-items: center;
-  width: 400rpx;
-  height: 400rpx;
-  background: white;
+  position: absolute;
+  top:20px;
+  width: 100%;
+  height: 100px;
 }
-.red
-{
-  display: flex;
-  align-items: center;
-  width: 400rpx;
-  height: 400rpx;
-  background: white;
+
+.userinfo-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
 }
-.yellow
-{
-  display: flex;
-  align-items: center;
-  width: 400rpx;
-  height: 400rpx;
-  background: white;
+
+.userinfo-nickname {
+  width: 88px;
+  height: 18px;
+  font-family: Avenir Next;
+  font-size: 12px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 8px;
 }
-.scroll-view{
-  height: 75%;
-  position:absolute;
-  top:50px;
-  left:150px;
-  right:30px;
+.dairyContainer{
+  position: absolute;
+  top: 105px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
 }
-.scroll-box{
-  width: 50%;
-  height: 60%;
-  border: 20rpx;
-  margin: 50rpx;
+
+ .scrollview{
+  display: inline-block;
+  height: 300px;
+} 
+.dairyid{
+  width: 40px;
+  height: 40px;
+  background-color: #3d3a55;
+  box-shadow: inset 0 3px 3px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+.dairyid text{
+  width: 46px;
+  height: 25px;
+  font-family: AvenirNext;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #a8a1e5;
+}
+.dairytitle{
+  width: 120px;
+  height: 140px;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.dairytitle text{
+  width: 100px;
+  height: 90px;
+  font-family: AvenirNext;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+
+.testy{
+  width: 100%;
+  height: 100%;
+}
+.testx{
+  width: 100%;
+  height: 100%;
 }

@@ -66,14 +66,14 @@ Page({
       },
     })
   },
-  turnTopage: function() {
-    wx.navigateTo({
-      url: '../all_history/all_history'
-    })
-  },
   saveDairy: function() {
     this.setData({
         "save": "saved"
       });
+  },
+  expandup: function(){
+    wx.navigateTo({
+      url: '../all_history/all_history',
+    })
   }
 })
