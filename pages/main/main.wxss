@@ -62,8 +62,7 @@
   line-height: 40px;
   letter-spacing: normal;
   text-align: left;
-   color: #fff; 
-  /* border-bottom: solid #aaa; */
+  color: #fff; 
   position: absolute;
   top :20px;
   left: 20px;

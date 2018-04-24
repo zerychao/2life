@@ -8,18 +8,20 @@
     </block>
   </view>
 
-   <!-- <view class="dairyContainer"> -->
-       <!-- <scroll-view class="scrollview" scroll-y="true">
-        <view wx:for="{{daryList}}" wx:for-item="item" wx:for-index="idx">
-          <!-- <view class="dairyid"><text>{{idx}}</text></view> 
-          <view class="dairytitle"><text>{{item.title}}</text></view>
+<!-- 双层滚动日记卡片 -->
+  <view class="dairyContainer"> 
+  <!-- 外层垂直方向的滚动 -->
+    <view class="dairy">
+       <scroll-view class="scrollviewy" scroll-y="true">  
+        <view class="outscroll" wx:for="{{dairyPartList}}" wx:for-item="itemy" wx:for-index="idy">
+        <!-- 内层水平方向的滚动 -->
+          <scroll-view class="scrollviewx+{{idy}}" scroll-x="true">
+            <view class="innerscroll" wx:for="{{itemy}}" wx:for-item="itemx" wx:for-index="idx">
+            <text class="dairytitle">{{itemx.title}}</text>
+            </view>
+          </scroll-view>
         </view>
-      </scroll-view> --> 
-  <!-- </view>   -->
-         <view class="testy" wx:for="{{dairyPartList}}" wx:for-item="itemy" wx:for-index="idy">
-            <view class="testx" wx:for="{{itemy}}" wx:for-item="itemx" wx:for-index="idx">
-                <text style="width:20px;height:20px;">{{itemx.content}}</text>
-            </view>  
-        </view>  
-
+       </scroll-view> 
+   </view>
+  </view>   
 </view>
