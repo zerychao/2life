@@ -82,11 +82,20 @@
   position: absolute;
   left: 20px;
   right: 20px;
-  bottom: 10px; 
+  bottom: 40px; 
   top: 110px; 
   height: auto;
 }
 
+.save{
+  /* display: flex;
+  flex-direction: row; */
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 10px;
+  height: 30px;
+}
 .dairyCard{
   height: 200px;
   position: absolute;
@@ -160,4 +169,12 @@
   word-break: break-all;
   overflow: hidden;
   white-space: pre-wrap;
+}
+.emotion{
+  width:120px;
+  height: 36px;
+  position: absolute;
+  bottom: 20px;
+  background-image: radial-gradient(circle at 50% 100%, #61ecc9, #32d498);
+  border-radius: 0px 0px 8px 8px;
 }
