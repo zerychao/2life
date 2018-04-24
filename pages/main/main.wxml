@@ -13,18 +13,17 @@
         <textarea class="dairytext" 
         maxlength="-1"  cursor-spacing="0" />
     </view>
-      <!-- <view class="dairy" style="display:flex; height:700rpx">
-      <button class="allDairy" bindtap="turnTopage"></button>
-      <scroll-view class="scrollview" scroll-x scroll-left="{{scroll_left}}">  
-      <view class="scroll-block" style="width:{{tab_tite_data.length*t_width}}rpx;">  
-        <view class="scroll-box" wx:for="{{tab_tite_data}}"> 
-          <view class="scrollID" data-current="{{index}}">
-            <text class="ID">{{item.name}} </text>
+
+ <!-- 滚动日志卡 -->
+     <view class=" dairyCard"> 
+      <scroll-view class="scrollview" scroll-x="true">
+        <block class="dairybox" wx:for="{{dairyList}}" wx:for-item="item" wx:for-index="idx">
+          <view class="dairyTitleId">
+             <view class="id"><text>{{item.id}}</text></view>   
+             <view class="dairyTitle"><text>{{item.title}}</text></view>
           </view>
-           <view class="scroll"  style="background:{{item.color}};" data-current="{{index}}">{{item.name}} 
-           </view>  
-        </view>
-      </view>  
-      </scroll-view> 
-    </view>   -->
+        </block>
+      </scroll-view>
+     </view> 
+
 </view>

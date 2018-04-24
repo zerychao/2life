@@ -7,6 +7,9 @@
   right:0px;
   bottom:0px;
   z-index: -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .userinfo {
@@ -79,71 +82,82 @@
   position: absolute;
   left: 20px;
   right: 20px;
-  bottom: 20px; 
+  bottom: 10px; 
   top: 110px; 
   height: auto;
 }
 
-.dairy{
-  margin-left: auto;
-  margin-right: auto; 
-}
-
-.allDairy{
-  position: relative;
-  top:180rpx; 
-  width:60rpx;
-  height:50rpx;
-  font-size: 20rpx;
-  background-color:#3d3a55; 
-  color:#fff;
-  box-shadow: 1px 1px 1px #000;
-}
-
-.scrollview{
-  height:700rpx;
-  width:622rpx;
-  overflow:scroll;
-  margin: 0rpx;
-}
-
-.scroll-box{
-  height:100rpx;
-  width:200rpx;
-  padding: 10rpx; 
-  margin-bottom:10rpx;
-  display:inline-block; 
-  
-}
-
-.scrollID{
-  background-color: #3d3a55;
-  height: 50rpx;
-  width: 50rpx; 
-  border: 2rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-  box-shadow: -1px -1px 3px #000;
+.dairyCard{
+  height: 200px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right:0px;
   display: flex;
-  justify-content: center; 
-  position: relative;
-  left:49rpx;
+  align-items: center;
+}
+.scrollview{
+  width: 100%;
+  height: 100%;
+  white-space: nowrap; 
 }
 
-.ID{
-  text-align:center;
-  font-size: 30rpx;
+.dairyTitleId{
+  display: inline-block;
+  margin-right: 20px;
+  margin-top: 5px;
+}
+.id{
+  width: 40px;
+  height: 40px;
+  background-color: #3d3a55;
+  box-shadow: inset 0 3px 3px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.id text{
+  width: 38px;
+  height: 25px;
+  font-family: Avenir Next;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #a8a1e5;
+  position: absolute;
+  top: 12px;
+}
+.dairyTitle{
+  width: 120px;
+  height: 140px;
+  border-radius: 8px;
+  background-color: #fafafa;
+  position: absolute;
+  bottom: 20px;
+}
+
+.dairyTitle text{
+  width: 100px;
+  height: 90px;
+  font-family: Avenir Next;
+  font-size: 16px;
   font-weight: bold;
-  color: #fff;
-}
-
-.scroll{
-  width:100%;
-  height:200rpx;
-  text-align:center;
-  font-size:30rpx;
-  line-height:60rpx;
-  color:#000;
-  display:inline-block;
-  border-radius: 5%; 
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+  position: absolute;
+  top:10px;
+  left:10px;
+  right:10px;
+  bottom: 50px;
+  word-break: break-all;
+  overflow: hidden;
+  white-space: pre-wrap;
 }
