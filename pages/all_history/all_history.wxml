@@ -16,7 +16,7 @@
         <view class="outscroll" wx:for="{{diaryPartList}}" wx:for-item="itemy" wx:for-index="idy">
         <!-- 内层水平方向的滚动 -->
           <view class="id"><text>{{diaryPartList.length-idy}}</text></view>
-          <scroll-view class="scrollviewx+{{idy}}" scroll-x="true">
+          <scroll-view id="{{idy}}" class="scrollviewx" scroll-x="true">
             <view class="innerscroll" wx:for="{{itemy}}" wx:for-item="itemx" wx:for-index="idx">
             <text class="diarytitle"><text>{{itemx.title}}</text></text>
             </view>
