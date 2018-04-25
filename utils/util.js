@@ -21,7 +21,7 @@ module.exports = {
     return n[1] ? n : '0' + n
   },
 
-  parseDiarydate: diaryList => {
+  parseDiarydata: diaryList => {
     // 遍历对象计算共有多少相同的日期
     var n = 1;
     var date = diaryList[0].date;
@@ -49,16 +49,17 @@ module.exports = {
     }
     return arr;
   },
-
-  dateToweek: diaryList => {
-    var arr = new Array(diaryList.length);
+// 实现日期只有日的方法
+  dateToWeek: diaryList => {
+    var arr2 = new Array(diaryList.length);
     for (var i = 0; i < diaryList.length; i++) {
-      arr[i] = diaryList[i];
-      var date_new=arr[i].date.split(/-/) ;
-      arr[i].date=date_new[2];
-      console.log("zhezhe "+arr[i].date);
+      arr2[i] = diaryList[i];
     }
-    return arr;
+    for(var j=0;j<arr2.length;j++){
+      var date_new = arr2[j].date.split(/-/);
+      arr2[j].date = date_new[2];
+    }
+    return arr2;
   }
   
 }

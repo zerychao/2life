@@ -18,7 +18,7 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true,
         // diaryList: dummyData.diaryList
-        diaryList: util.dateToweek(dummyData.diaryList)
+        diaryList: util.dateToWeek(dummyData.diaryList)
       })
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -28,7 +28,7 @@ Page({
           userInfo: res.userInfo,
           hasUserInfo: true,
           // diaryList: dummyData.diaryList
-          diaryList: util.dateToweek(dummyData.diaryList)
+          diaryList: util.dateToWeek(dummyData.diaryList)
         })
       }
     } else {
@@ -40,7 +40,7 @@ Page({
             userInfo: res.userInfo,
             hasUserInfo: true,
             // diaryList: dummyData.diaryList
-            diaryList: util.dateToweek(dummyData.diaryList)
+            diaryList: util.dateToWeek(dummyData.diaryList)
           })
         }
       })
