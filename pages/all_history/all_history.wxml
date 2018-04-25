@@ -1,28 +1,32 @@
 <view class="container">
-<!-- 获取头像昵称 -->
+  <!-- 获取头像昵称 -->
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" bindtap="expandup"></image> 
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" bindtap="expandup"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
 
   <!-- 双层滚动日记卡片 -->
-  <view class="diaryContainer"> 
+  <view class="diaryContainer">
     <!-- 外层垂直方向的滚动 -->
     <view class="diary">
-       <scroll-view class="scrollviewy" scroll-y="true">  
+      <scroll-view class="scrollviewy" scroll-y="true">
         <view class="outscroll" wx:for="{{diaryPartList}}" wx:for-item="itemy" wx:for-index="idy">
-          <view class="id"><text>{{diaryPartList.length-idy}}</text></view>
+          <view class="id">
+            <text>{{diaryPartList.length-idy}}</text>
+          </view>
           <!-- 内层水平方向的滚动 -->
           <scroll-view id="{{idy}}" class="scrollviewx" scroll-x="true">
             <view class="innerscroll" wx:for="{{itemy}}" wx:for-item="itemx" wx:for-index="idx">
-              <view class="diaryblock"><text>{{itemx.title}}</text></view>
+              <view class="diaryblock">
+                <text>{{itemx.title}}</text>
+              </view>
             </view>
           </scroll-view>
         </view>
-       </scroll-view> 
-   </view>
-  </view>   
+      </scroll-view>
+    </view>
+  </view>
 </view>

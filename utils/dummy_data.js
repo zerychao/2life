@@ -1,16 +1,15 @@
-
-var diaryList=[
+var diaryList = [
   {
-    title:"1",
-    content:"吉萨本科插班生开场白酷暑的出口标识的客户保持可谁都不吃白色的本场比赛计划的补偿金",
-    id:1,
-    emotion:1,
-    data:"2018-04-11"
+    title: "1",
+    content: "吉萨本科插班生开场白酷暑的出口标识的客户保持可谁都不吃白色的本场比赛计划的补偿金",
+    id: 1,
+    emotion: 1,
+    data: "2018-04-11"
   },
   {
-    title:"2",
-    content:"kjsddnkjdbvkdf",
-    id:2,
+    title: "2",
+    content: "kjsddnkjdbvkdf",
+    id: 2,
     emotion: 2,
     data: "2018-04-11"
   },
@@ -168,7 +167,7 @@ var diaryList=[
     emotion: 6,
     data: "2018-04-03"
   },
-    {
+  {
     title: "25",
     content: "kjsddnkjdbvkdf",
     id: 25,

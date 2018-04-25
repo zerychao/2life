@@ -2,7 +2,7 @@
 //获取应用实例
 const app = getApp()
 var util = require("../../utils/util.js")
-var dummyData=require("../../utils/dummy_data.js")
+var dummyData = require("../../utils/dummy_data.js")
 
 var order = ['red', 'yellow', 'blue', 'green', 'red']
 Page({
@@ -10,7 +10,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    save:"save"
+    save: "save"
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
@@ -51,17 +51,17 @@ Page({
       hasUserInfo: true
     })
   },
-  contact: function() {
+  contact: function () {
     wx.navigateTo({
       url: '../pair_details/pair_details'
     })
   },
-  savediary: function() {
+  savediary: function () {
     this.setData({
-        "save": "saved"
-      });
+      "save": "saved"
+    });
   },
-  expandup: function(){
+  expandup: function () {
     wx.navigateTo({
       url: '../all_history/all_history',
     })
