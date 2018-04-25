@@ -24,7 +24,7 @@
                 {{itemx.title}}
               </view>
               <view class="emotion">
-                <view wx:if="{{item.emotion>1}}">蓝色</view>
+                <view wx:if="{{item.Emotiontype>1}}">蓝色</view>
                   <view wx:else>黑色</view>
               </view>
             </view>

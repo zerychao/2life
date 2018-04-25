@@ -21,13 +21,13 @@ module.exports = {
     return n[1] ? n : '0' + n
   },
 
-  parseDiaryData: diaryList => {
+  parseDiarydate: diaryList => {
     // 遍历对象计算共有多少相同的日期
     var n = 1;
-    var data = diaryList[0].data;
+    var date = diaryList[0].date;
     for (var l = 1; l < diaryList.length; l++) {
-      if (data != diaryList[l].data) {
-        data = diaryList[l].data;
+      if (date != diaryList[l].date) {
+        date = diaryList[l].date;
         n++;
       }
     }
@@ -38,7 +38,7 @@ module.exports = {
     arr[0][0] = diaryList[0];
     var count = 0;
     for (var i = 1, j = 1; i < diaryList.length; i++ , j++) {
-      if (diaryList[j].data == diaryList[j - 1].data) {
+      if (diaryList[j].date == diaryList[j - 1].date) {
         arr[count][j] = diaryList[i];
       }
       else {
