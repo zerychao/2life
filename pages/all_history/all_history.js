@@ -13,7 +13,7 @@ Page({
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true,
-        dairyPartList: dataObj.dairyPartList
+        diaryPartList: dataObj.diaryPartList
       })
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -22,7 +22,7 @@ Page({
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true,
-          dairyPartList: dataObj.dairyPartList
+          diaryPartList: dataObj.diaryPartList
         })
       }
     } else {
@@ -33,7 +33,7 @@ Page({
           this.setData({
             userInfo: res.userInfo,
             hasUserInfo: true,
-            dairyParList: dataObj.dairyPartList
+            diaryParList: dataObj.diaryPartList
           })
         }
       })
