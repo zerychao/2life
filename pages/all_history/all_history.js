@@ -1,7 +1,10 @@
 //index.js
 //获取应用实例
 const app = getApp()
-var dataObj = require("../../utils/dummy_data.js")
+var util = require("../../utils/util.js")
+var dummyData = require("../../utils/dummy_data.js")
+
+
 Page({
   data: {
     userInfo: {},
@@ -13,7 +16,7 @@ Page({
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true,
-        dairyPartList: dataObj.dairyPartList
+        diaryPartList: util.parseDiaryData(dummyData.dairyList)
       })
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -22,7 +25,7 @@ Page({
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true,
-          dairyPartList: dataObj.dairyPartList
+          diaryPartList: util.parseDiaryData(dummyData.dairyList)
         })
       }
     } else {
@@ -33,7 +36,7 @@ Page({
           this.setData({
             userInfo: res.userInfo,
             hasUserInfo: true,
-            dairyParList: dataObj.dairyPartList
+            diaryPartList: util.parseDiaryData(dummyData.dairyList)
           })
         }
       })

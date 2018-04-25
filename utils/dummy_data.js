@@ -1,5 +1,5 @@
 
-var dairyList=[
+var diaryList=[
   {
     title:"1",
     content:"吉萨本科插班生开场白酷暑的出口标识的客户保持可谁都不吃白色的本场比赛计划的补偿金",
@@ -253,23 +253,7 @@ var dairyList=[
     data: "2018-03-22"
   }
 ]
-var arr = new Array(6);   //表格有10行  
-for (var i = 0; i < arr.length; i++) {
-  arr[i] = new Array();    //每行有10列  
-}
-arr[0][0]=dairyList[0];
-  var count=0;
-  for(var i=1,j=1;i<dairyList.length;i++,j++){
-    if(dairyList[j].data==dairyList[j-1].data){
-      arr[count][j] = dairyList[i];
-    }
-    else{
-      count++;
-      j=0;
-      arr[count][j]=dairyList[i];
-    }
-  }
-module.exports={
-  dairyList:dairyList,
-  dairyPartList:arr
+
+module.exports = {
+  dairyList: diaryList
 }

@@ -41,7 +41,7 @@
   color: #ffffff;
   margin-top: 8px;
 }
-.dairybox{ 
+.diarybox{ 
   border-radius: 8px;
   background-image: radial-gradient(circle at 50% 100%, #504c6f, #3d3a54);
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5);
@@ -52,7 +52,7 @@
   right:20px;
 }
 
-.dairytitle{
+.diarytitle{
   height:80px;
   font-family: Avenir Next;
   font-size: 24px;
@@ -68,7 +68,7 @@
   left: 20px;
   right: 20px;
 }
-.dairytext{
+.diarytext{
   font-family: Avenir Next;
   font-size: 18px;
   font-weight: 600;
@@ -95,7 +95,7 @@
   bottom: 10px;
   height: 30px;
 }
-.dairyCard{
+.diaryCard{
   height: 200px;
   position: absolute;
   bottom: 20px;
@@ -110,7 +110,7 @@
   white-space: nowrap; 
 }
 
-.dairyTitleId{
+.diaryTitleId{
   display: inline-block;
   margin-right: 20px;
   margin-top: 5px;
@@ -139,7 +139,7 @@
   position: absolute;
   top: 12px;
 }
-.dairyTitle{
+.diaryTitle{
   width: 120px;
   height: 140px;
   border-radius: 8px;
@@ -148,7 +148,7 @@
   bottom: 20px;
 }
 
-.dairyTitle text{
+.diaryTitle text{
   width: 100px;
   height: 90px;
   font-family: Avenir Next;
