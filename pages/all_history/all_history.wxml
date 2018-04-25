@@ -8,17 +8,17 @@
     </block>
   </view>
 
-<!-- 双层滚动日记卡片 -->
+  <!-- 双层滚动日记卡片 -->
   <view class="diaryContainer"> 
-  <!-- 外层垂直方向的滚动 -->
+    <!-- 外层垂直方向的滚动 -->
     <view class="diary">
        <scroll-view class="scrollviewy" scroll-y="true">  
         <view class="outscroll" wx:for="{{diaryPartList}}" wx:for-item="itemy" wx:for-index="idy">
-        <!-- 内层水平方向的滚动 -->
           <view class="id"><text>{{diaryPartList.length-idy}}</text></view>
+          <!-- 内层水平方向的滚动 -->
           <scroll-view id="{{idy}}" class="scrollviewx" scroll-x="true">
             <view class="innerscroll" wx:for="{{itemy}}" wx:for-item="itemx" wx:for-index="idx">
-            <text class="diarytitle"><text>{{itemx.title}}</text></text>
+              <view class="diarytitle"><text>{{itemx.title}}</text></view>
             </view>
           </scroll-view>
         </view>
