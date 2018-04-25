@@ -48,6 +48,17 @@ module.exports = {
       }
     }
     return arr;
+  },
+
+  dateToweek: diaryList => {
+    var arr = new Array(diaryList.length);
+    for (var i = 0; i < diaryList.length; i++) {
+      arr[i] = diaryList[i];
+      var date_new=arr[i].date.split(/-/) ;
+      arr[i].date=date_new[2];
+      console.log("zhezhe "+arr[i].date);
+    }
+    return arr;
   }
   
 }

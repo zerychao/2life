@@ -26,7 +26,7 @@
       <block class="diarybox" wx:for="{{diaryList}}" wx:for-item="item" wx:for-index="idx">
         <view class="diaryTitleId">
           <view class="id">
-            <text>{{diaryList.length-idx}}</text>
+            <text>{{item.date}}</text>
           </view>
           <view class="diaryTitle">
             <text>{{item.title}}</text>
