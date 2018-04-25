@@ -22,9 +22,18 @@ module.exports = {
   },
 
   parseDiaryData: diaryList => {
-    var arr = new Array(6);   //表格有10行  
+    // 遍历对象计算共有多少相同的日期
+    var n = 1;
+    var data = diaryList[0].data;
+    for (var l = 1; l < diaryList.length; l++) {
+      if (data != diaryList[l].data) {
+        data = diaryList[l].data;
+        n++;
+      }
+    }
+    var arr = new Array(n);
     for (var i = 0; i < arr.length; i++) {
-      arr[i] = new Array();    //每行有10列  
+      arr[i] = new Array();
     }
     arr[0][0] = diaryList[0];
     var count = 0;
