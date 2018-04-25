@@ -253,7 +253,29 @@ var diaryList=[
     data: "2018-03-22"
   }
 ]
+<<<<<<< HEAD
 
 module.exports = {
   dairyList: diaryList
+=======
+var arr = new Array(6);   //表格有10行  
+for (var i = 0; i < arr.length; i++) {
+  arr[i] = new Array();    //每行有10列  
+}
+arr[0][0]=diaryList[0];
+  var count=0;
+  for(var i=1,j=1;i<diaryList.length;i++,j++){
+    if(diaryList[j].data==diaryList[j-1].data){
+      arr[count][j] = diaryList[i];
+    }
+    else{
+      count++;
+      j=0;
+      arr[count][j]=diaryList[i];
+    }
+  }
+module.exports={
+  diaryList:diaryList,
+  diaryPartList:arr
+>>>>>>> 3ce65311f2e1d6a387c99fc8574316efd36fd4ec
 }
