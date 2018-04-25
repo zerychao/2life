@@ -1,6 +1,6 @@
 //index.js
 //获取应用实例
-var dataObj=require("../../data/data.js")
+var dataObj=require("../../utils/dummy_data.js")
 const app = getApp()
 
 var order = ['red', 'yellow', 'blue', 'green', 'red']

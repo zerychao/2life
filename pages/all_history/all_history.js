@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-var dataObj = require("../../data/data.js")
+var dataObj = require("../../utils/dummy_data.js")
 Page({
   data: {
     userInfo: {},
