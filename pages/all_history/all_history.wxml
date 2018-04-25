@@ -21,7 +21,7 @@
           <scroll-view id="{{idy}}" class="scrollviewx" scroll-x="true">
             <view class="innerscroll" wx:for="{{itemy}}" wx:for-item="itemx" wx:for-index="idx">
               <view class="diaryblock">
-                <text>{{itemx.title}}</text>
+                {{itemx.title}}
               </view>
             </view>
           </scroll-view>
