@@ -74,7 +74,7 @@
   width: 40px;
   height: 40px;
   display: block;
-  font-family: AvenirNext;
+  font-family: Avenir Next;
   font-size: 18px;
   font-weight: 600;
   font-style: normal;
@@ -113,7 +113,7 @@
   height: 90px;
 }
 .diaryblock text{
-  font-family: AvenirNext;
+  font-family: Avenir Next;
   font-size: 16px;
   font-weight: bold;
   font-style: normal;
