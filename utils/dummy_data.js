@@ -255,5 +255,5 @@ var diaryList=[
 ]
 
 module.exports = {
-  dairyList: diaryList
+  diaryList: diaryList
 }
