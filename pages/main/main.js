@@ -10,7 +10,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    save: "save"
+    save: "Save"
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
@@ -58,7 +58,7 @@ Page({
   },
   savediary: function () {
     this.setData({
-      "save": "saved"
+      "save": "Saved"
     });
   },
   expandup: function () {

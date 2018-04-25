@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/all_history/all_history",
     "pages/main/main",
+    "pages/all_history/all_history",
     "pages/pair_details/pair_details"
   ],
   "window":{
