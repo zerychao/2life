@@ -14,8 +14,11 @@
     <view class="diary">
       <scroll-view class="scrollviewy" scroll-y="true">
         <view class="outscroll" wx:for="{{diaryPartList}}" wx:for-item="itemy" wx:for-index="idy">
-          <view class="id">
-            <text>{{itemy[0].date}}</text>
+          <view class="dateDottedline">
+            <view class="date"><text>{{itemy[0].date}}</text></view>
+            <block wx:if="{{idy!=(diaryPartList.length-1)}}">
+              <image class="Dottedlineimg" src="../../resources/icons/DottedLine.svg">DottedLine</image> 
+            </block>
           </view>
           <!-- 内层水平方向的滚动 -->
           <scroll-view id="{{idy}}" class="scrollviewx" scroll-x="true">
@@ -33,4 +36,5 @@
       </scroll-view>
     </view>
   </view>
+
 </view>

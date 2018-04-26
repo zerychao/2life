@@ -66,7 +66,13 @@
   align-items: center;
 }
 
-.id {
+.dateDottedline{
+  width: auto;
+  height: 100%;
+  margin-top: 100px;
+}
+
+.date {
   width: 40px;
   height: 40px;
   background-color: #3d3a55;
@@ -75,7 +81,7 @@
   margin-left: 30px;
 }
 
-.id text {
+.date text {
   width: 40px;
   height: 40px;
   display: block;
@@ -89,7 +95,14 @@
   text-align: center;
   color: #a8a1e5;
 }
-
+.Dottedlineimg{
+  width: 54px;
+  height: 2px;
+  object-fit: contain;
+  transform: rotate(90deg);
+  margin-left: 22px; 
+  margin-top: 60px; 
+}
 .outscroll {
   height: 140px;
   margin-bottom: 20px;
@@ -139,7 +152,7 @@
   width: 120px;
   height: 36px;
   position: absolute;
-  bottom: 20px; 
+  bottom: 20px; /*安卓改为0px*/
   background-image: radial-gradient(circle at 50% 100%, #61ecc9, #32d498);
   border-radius: 0px 0px 8px 8px;
 }
