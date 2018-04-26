@@ -4,7 +4,7 @@
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
-      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" bindtap="expandup"></image>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" bindtap="contact"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
@@ -25,8 +25,13 @@
     <scroll-view class="scrollview" scroll-x="true">
       <block class="diarybox" wx:for="{{diaryList}}" wx:for-item="item" wx:for-index="idx">
         <view class="diaryTitleId">
-          <view class="id">
-            <text>{{item.date}}</text>
+          <view class="expandupId">
+            <block wx:if="{{idx==0}}">
+              <image class="expandupimg" src="../../resources/icons/Expandup.svg" bindtap="turnToAllhistory">Expandup</image>
+            </block>
+            <view id="{{idx}}" class="date">
+              <text>{{item.date}}</text>
+            </view>
           </view>
           <view class="diaryTitle">
             <text>{{item.title}}</text>

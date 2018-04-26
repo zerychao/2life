@@ -64,7 +64,7 @@ Page({
       "save": "Saved"
     });
   },
-  expandup: function () {
+  turnToAllhistory: function () {
     wx.navigateTo({
       url: '../all_history/all_history',
     })
