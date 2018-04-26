@@ -1,15 +1,68 @@
 <view class="container">
-  <scroll-view class="messageSV" scroll-y="true" scroll-into-view="red" scroll-top="0">
-    <block wx:for="{{mesArray}}">
-      <template is="{{item.mesType}}" data="{{mes:item.mesitem.mes,userInfo:item.mesitem.userInfo}}" />
-    </block>
-  </scroll-view>
-
-  <view class="bottom-line">
-
-    <input type="text" value="{{inputValue}}" bindinput="bindKeyInput" bindblur="bindblurInput"></input>
-    <button type="primary" bindtap="sendMes">发送</button>
+<!-- 头像区 -->
+  <view class="userinfos">
+  <!-- 自己的头像昵称 -->
+      <view class="myuserinfo">
+      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <block wx:else>
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" style="width: 64px;height: 64px; margin: 0px;"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      </block>
+    </view> 
+  <!-- 匹配对象的头像昵称 -->
+      <view class="pairuserinfo">
+      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <block wx:else>
+        <image class="pairuserinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+        <text class="pairuserinfo-nickname">{{userInfo.nickName}}</text>
+      </block>
+    </view> 
+  </view> 
+<!-- 聊天空间栏 -->
+  <view class="messagespace">
+    <scroll-view class="messageSV" scroll-y="true" scroll-into-view="{{toView}}" scroll-top="0">
+      <block wx:for="{{mesArray}}">
+        <template is="{{item.mesType}}" data="{{mes:item.mesitem.mes,userInfo:item.mesitem.userInfo}}" />
+      </block>
+    </scroll-view>  
   </view>
+<!-- 输入栏和发送键 -->
+  <view class="inputSend">
+    <image class="moreimg" src="../../resources/icons/More.svg"></image>
+    <input class="inputspace" value="{{inputValue}}" bindinput="bindKeyInput" bindblur="bindblurInput"></input>
+    <image class="sendimg" src="../../resources/icons/Send.svg" bindtap="sendMes"></image>
+  </view>
+
+<!-- 滚动日志卡 -->
+  <view class=" diaryCard">
+    <scroll-view class="scrollview" scroll-x="true">
+      <block class="diarybox" wx:for="{{diaryList}}" wx:for-item="item" wx:for-index="idx">
+        <view class="diaryTitleId">
+          <view class="expandupId">
+            <block wx:if="{{idx==0}}">
+              <image class="expandupimg" src="../../resources/icons/Expandup.svg" bindtap="turnToAllhistory">Expandup</image>
+            </block>
+            <view id="{{idx}}" class="date">
+              <text>{{item.date}}</text>
+            </view>
+            <block wx:if="{{idx!=(diaryList.length-1)}}">
+             <image class="Dottedlineimg" src="../../resources/icons/DottedLine.svg"></image> 
+            </block>
+          </view>
+          <view class="diaryTitle">
+            <text>{{item.title}}</text>
+          </view>
+          <view class="emotion" style="bottom:{{system}}px;">
+            <view wx:if="{{item.Emotiontype>1}}">蓝色</view>
+            <view wx:else>黑色</view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+
+
+
 </view>
 
 <!--template-->
@@ -21,7 +74,6 @@
       <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <view class="m">
         <text class="mes">{{mes}}</text>
-        <view class="arrow"></view>
       </view>
     </view>
     <view class="yk"></view>
@@ -33,7 +85,6 @@
       <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <view class="m">
         <text class="mes">{{mes}}</text>
-        <view class="arrow"></view>
       </view>
     </view>
     <view class="yk"></view>
