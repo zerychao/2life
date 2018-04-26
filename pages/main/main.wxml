@@ -12,7 +12,7 @@
   <!-- 文本框 -->
   <view class="diarybox">
     <textarea class="diarytitle" focus placeholder="What is going on today?" placeholder-style="color:#5b577d" />
-    <textarea class="diarytext" maxlength="-1" cursor-spacing="0"/>
+    <textarea class="diarytext" maxlength="-1" cursor-spacing="0" />
     <view class="save">
       <view id="savebutton">
         <text id="savetext" bindtap="savediary">{{save}}</text>

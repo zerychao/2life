@@ -1,25 +1,32 @@
 //获取应用实例
 var app = getApp()
-var util = require("../../utils/util.js")
-var dummyData = require("../../utils/dummy_data.js")
 Page({
   data: {
     userInfo: {},
     inputValue: "",
     mesArray: [],
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    system: 30,
-    toView: ''
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
-
+  // onLoad: function () {
+  //   // wx.setNavigationBarTitle({
+  //   //   title: '在线聊天'
+  //   // })
+  //   var that = this
+  //   //调用应用实例的方法获取全局数据
+  //   app.getUserInfo(function (userInfo) {
+  //     //更新数据
+  //     that.setData({
+  //       userInfo: userInfo
+  //     })
+  //   })
+  // },
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
-        hasUserInfo: true,
-        diaryList: util.parseDiaryData.dateToDayWeekday(dummyData.diaryList)
+        hasUserInfo: true
       })
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -27,8 +34,7 @@ Page({
       app.userInfoReadyCallback = res => {
         this.setData({
           userInfo: res.userInfo,
-          hasUserInfo: true,
-          diaryList: util.parseDiaryData.dateToDayWeekday(dummyData.diaryList)
+          hasUserInfo: true
         })
       }
     } else {
@@ -38,27 +44,11 @@ Page({
           app.globalData.userInfo = res.userInfo
           this.setData({
             userInfo: res.userInfo,
-            hasUserInfo: true,
-            diaryList: util.parseDiaryData.dateToDayWeekday(dummyData.diaryList)
+            hasUserInfo: true
           })
         }
       })
     }
-  },
-  onShow: function () {
-    var that = this;
-    wx.getSystemInfo({
-      success: function (res) {
-        console.log(res.system)
-        var system = res.system.split(/ /)
-        console.log("system: " + system[0])
-        if (system[0] == "Android") {
-          that.setData({
-            "system": 10
-          })
-        }
-      }
-    })
   },
   getUserInfo: function (e) {
     console.log(e)
@@ -90,14 +80,9 @@ Page({
       oriMesArr.push(myNewMes);
       this.setData({ mesArray: oriMesArr });
       this.setData({ inputValue: "" });
-      this.setData({ toView: myNewMes });
 
     }
-  },
-  turnToAllhistory: function () {
-    wx.navigateTo({
-      url: '../all_history/all_history',
-    })
   }
+
 
 })

@@ -88,7 +88,6 @@
   bottom: 50px;
   top: 100px;
   height: auto;
-
 }
 
 .save {
