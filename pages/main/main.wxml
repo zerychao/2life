@@ -33,7 +33,7 @@
               <text>{{item.date}}</text>
             </view>
             <block wx:if="{{idx!=(diaryList.length-1)}}">
-             <image class="Dottedlineimg" src="../../resources/icons/DottedLine.svg">DottedLine</image> 
+             <image class="Dottedlineimg" src="../../resources/icons/DottedLine.svg"></image> 
             </block>
           </view>
           <view class="diaryTitle">

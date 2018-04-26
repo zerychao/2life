@@ -17,7 +17,7 @@
           <view class="dateDottedline">
             <view class="date"><text>{{itemy[0].date}}</text></view>
             <block wx:if="{{idy!=(diaryPartList.length-1)}}">
-              <image class="Dottedlineimg" src="../../resources/icons/DottedLine.svg">DottedLine</image> 
+              <image class="Dottedlineimg" src="../../resources/icons/DottedLine.svg"></image> 
             </block>
           </view>
           <!-- 内层水平方向的滚动 -->
