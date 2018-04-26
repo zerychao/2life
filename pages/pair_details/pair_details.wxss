@@ -7,45 +7,128 @@
   right: 0px;
   bottom: 0px;
   z-index: -1;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
 }
 
-.bottom-line {
-  border-top: 1px solid gainsboro;
-  background-color: #2b293d;
-  width: 100%;
-  height: 50px;
+.userinfos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   position: absolute;
-  bottom: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100px;
 }
 
-.bottom-line input {
-  float: left;
-  background-color: #3d3a55;
-  width: 75%;
-  height: 85%;
-  font-size: 24px;
-  margin: 1px 2% 1px;
-  margin-top: 2.5px;
-  box-shadow: 2px 2px 3px #000;
-  border-radius: 20px;
+.myuserinfo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left:80px;
+
+}
+.userinfo-avatar {
+  border-radius: 50%;
 }
 
-.bottom-line button {
-  float: left;
-  width: 20%;
-  height: 85%;
-  margin-top: 2.5px;
-  background-color: #3d3a55;
-  box-shadow: 0px 0px 3px #000;
+.userinfo-nickname {
+  width: 88px;
+  height: 18px;
+  font-family: Avenir Next;
+  font-size: 12px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #fff;
+  margin-top: 8px;
+}
+
+.pairuserinfo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  right:80px;
+}
+.pairuserinfo-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.pairuserinfo-nickname {
+  width: 88px;
+  height: 18px;
+  font-family: Avenir Next;
+  font-size: 12px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #fff;
+  margin-top: 8px;
+}
+
+.messagespace{
+  width: 100%;
+  position: absolute;
+  top: 120px;
+  bottom: 306px;
 }
 
 .messageSV {
   background-color: #2b293d;
-  z-index: 1;
   width: 100%;
+  height: 100%;
+   /* border: 1px solid #fff;  */
+}
+
+.inputSend {
+  background-color: #2b293d;
+  width: 375px;
+  height: 56px;
   position: absolute;
-  top: 0px;
-  bottom: 51px;
+  bottom: 230px;
+  display: flex;
+  flex-flow: row;
+  align-content: center;
+  align-items: center;
+}
+
+.moreimg{
+  width: 32px;
+  height: 33px;
+  object-fit: contain;
+  position: absolute;
+  left:20px;
+  right: 323px;
+}
+
+.inputspace{
+  width: 250px;
+  height: 36px;
+  border-radius: 18px;
+  background-color: #3d3a55;
+  box-shadow: inset 0 3px 3px 0 rgba(0, 0, 0, 0.5);
+  position: absolute;
+  left: 62px;
+  right: 62px;
+}
+.sendimg{
+  width: 32px;
+  height: 33px;
+  object-fit: contain;
+  position: absolute;
+  left: 323px;
+  right: 20px;
 }
 
 /************myMessage********************/
@@ -73,30 +156,29 @@
   position: relative;
   float: right;
   margin: 10px;
-  max-width: 60%;
+  max-width: 50%;
+  background-image: radial-gradient(circle at 50% 100%, #58d6b6, #32d498);
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 10px; 
 }
 
 .myview .m .mes {
   position: relative;
   padding: 10px;
-  background: #4ec046;
-  border-radius: 5px; /* 圆角 */
   word-wrap: break-word;
   max-width: 90%;
   float: right;
+  font-family: Avenir Next;
+  font-size: 16px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
 }
 
-.myview .m .arrow {
-  position: absolute;
-  top: 5px;
-  right: -16px; /* 圆角的位置需要细心调试哦 */
-  width: 0;
-  height: 0;
-  font-size: 16px;
-  border: solid 8px;
-  border-color: #2b293d #2b293d #2b293d #4ec046;
-  z-index: 0;
-}
 
 /************youMessage********************/
 
@@ -116,31 +198,146 @@
   position: relative;
   float: left;
   margin: 10px;
-  max-width: 60%;
+  max-width: 50%;
+  border-radius: 10px;
+  background-image: radial-gradient(circle at 50% 98%, #3ca3f3, #328dd4);
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 .youview .m .mes {
   position: relative;
   padding: 10px;
   background: white;
-  border-radius: 5px; /* 圆角 */
   word-wrap: break-word;
   max-width: 90%;
   float: left;
+  font-family: Avenir Next;
+  font-size: 16px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
 }
 
-.youview .m .arrow {
-  position: absolute;
-  top: 5px;
-  left: -16px; /* 圆角的位置需要细心调试哦 */
-  width: 0;
-  height: 0;
-  font-size: 16px;
-  border: solid 8px;
-  border-color: #2b293d white #2b293d #2b293d;
-  z-index: 0;
-}
 
 .yk {
   clear: both;
+}
+
+/*日记卡  */
+
+.diaryCard {
+  height: 210px;
+  position: absolute;
+  bottom: 10px;
+  left: 0px;
+  right: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.scrollview {
+  width: 100%;
+  height: 100%;
+  white-space: nowrap;
+}
+
+.diaryTitleId {
+  display: inline-block;
+  margin-right: 20px;
+  margin-top: 5px;
+}
+
+.diaryTitleId:first-child {
+  margin-left: 20px;
+}
+
+.expandupId {
+  width: 120px;
+  height: 100%;
+}
+.expandupimg {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  position: absolute;
+  top: 15px;
+  left: 28px; 
+}
+
+.date {
+  width: 40px;
+  height: 40px;
+  background-color: #3d3a55;
+  box-shadow: inset 0 3px 3px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  margin-left: 40px;
+  margin-right: 40px; 
+  display: inline-flex;
+}
+
+.date text {
+  width: 40px;
+  height: 40px;
+  font-family: Avenir Next;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 40px;
+  letter-spacing: normal;
+  text-align: center;
+  color: #a8a1e5;
+  display: block;
+}
+
+.Dottedlineimg{
+  width: 54px;
+  height: 2px;
+  object-fit: contain;
+  margin-left: -20px; 
+}
+
+.diaryTitle {
+  width: 120px;
+  height: 140px;
+  border-radius: 8px;
+  background-color: #fafafa;
+  position: absolute;
+  bottom: 20px;
+  top:60px;
+}
+
+.diaryTitle text {
+  width: 100px;
+  height: 90px;
+  font-family: Avenir Next;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 50px;
+  word-break: break-all;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+
+.emotion {
+  width: 120px;
+  height: 36px;
+  position: absolute;
+  /* bottom: system px; 安卓改为0px；  */
+  background-image: radial-gradient(circle at 50% 100%, #61ecc9, #32d498);
+  border-radius: 0px 0px 8px 8px;
 }
