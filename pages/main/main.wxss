@@ -231,7 +231,7 @@
   width: 120px;
   height: 36px;
   position: absolute;
-  bottom: 20px; /*安卓改为0px；*/ 
+  /* bottom: system px; 安卓改为0px；  */
   background-image: radial-gradient(circle at 50% 100%, #61ecc9, #32d498);
   border-radius: 0px 0px 8px 8px;
 }

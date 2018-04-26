@@ -10,14 +10,14 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    save: "Save"
+    save: "Save",
+    system: 20
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true,
-        // diaryList: dummyData.diaryList
         diaryList: util.parseDiaryData.dateToDayWeekday(dummyData.diaryList)
       })
     } else if (this.data.canIUse) {
@@ -27,7 +27,6 @@ Page({
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true,
-          // diaryList: dummyData.diaryList
           diaryList: util.parseDiaryData.dateToDayWeekday(dummyData.diaryList)
         })
       }
@@ -39,12 +38,26 @@ Page({
           this.setData({
             userInfo: res.userInfo,
             hasUserInfo: true,
-            // diaryList: dummyData.diaryList
             diaryList: util.parseDiaryData.dateToDayWeekday(dummyData.diaryList)
           })
         }
       })
     }
+  },
+  onShow: function(){
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res.system)
+        var system = res.system.split(/ /)
+        console.log("system: "+system[0])
+        if (system[0]=="Android"){
+          that.setData({
+            "system": 0
+          })
+        }
+      }
+    })
   },
   getUserInfo: function (e) {
     console.log(e)

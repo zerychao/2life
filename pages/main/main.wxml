@@ -39,7 +39,7 @@
           <view class="diaryTitle">
             <text>{{item.title}}</text>
           </view>
-          <view class="emotion">
+          <view class="emotion" style="bottom:{{system}}px;">
             <view wx:if="{{item.Emotiontype>1}}">蓝色</view>
             <view wx:else>黑色</view>
           </view>

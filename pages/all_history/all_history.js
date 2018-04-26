@@ -10,6 +10,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    system: 20
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
@@ -41,6 +42,21 @@ Page({
         }
       })
     }
+  },
+  onShow: function () {
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res.system)
+        var system = res.system.split(/ /)
+        console.log("system: " + system[0])
+        if (system[0] == "Android") {
+          that.setData({
+            "system": 0
+          })
+        }
+      }
+    })
   },
   getUserInfo: function (e) {
     console.log(e)
