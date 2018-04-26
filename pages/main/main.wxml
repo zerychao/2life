@@ -32,6 +32,9 @@
             <view id="{{idx}}" class="date">
               <text>{{item.date}}</text>
             </view>
+            <block wx:if="{{idx!=(diaryList.length-1)}}">
+             <image class="Dottedlineimg" src="../../resources/icons/DottedLine.svg">DottedLine</image> 
+            </block>
           </view>
           <view class="diaryTitle">
             <text>{{item.title}}</text>

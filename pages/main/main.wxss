@@ -157,7 +157,7 @@
   height: 24px;
   object-fit: contain;
   position: absolute;
-  top: 12px;
+  top: 15px;
   left: 28px;
 }
 
@@ -185,6 +185,13 @@
   text-align: center;
   color: #a8a1e5;
   display: block;
+}
+
+.Dottedlineimg{
+  width: 54px;
+  height: 2px;
+  object-fit: contain;
+  margin-left: -20px;
 }
 
 .diaryTitle {
