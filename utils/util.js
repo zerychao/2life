@@ -40,7 +40,7 @@ module.exports = {
       arr[0][0] = diaryList[0];
       var count = 0;
       for (var i = 1, j = 1; i < diaryList.length; i++ , j++) {
-        if (diaryList[j].date == diaryList[j - 1].date) {
+        if (diaryList[i].date == diaryList[i - 1].date) {
           arr[count][j] = diaryList[i];
         }
         else {
@@ -52,12 +52,10 @@ module.exports = {
       return arr;
     },
 
-    // 实现日期只有日的方法
+    // 实现日期只有日和星期的方法
     dateToDayWeekday: diaryList => {
-      var arr2 = new Array(diaryList.length);
-      for (var i = 0; i < diaryList.length; i++) {
-        arr2[i] = diaryList[i];
-      }
+      var arr2 = new Array();
+      arr2=JSON.parse(JSON.stringify(diaryList));
       for(var j=0;j<arr2.length;j++){
         var date_new = arr2[j].date.split(/-/);
         arr2[j].date = date_new[2];

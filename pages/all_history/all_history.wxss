@@ -139,7 +139,7 @@
   width: 120px;
   height: 36px;
   position: absolute;
-  bottom: 0px; 
+  bottom: 20px; 
   background-image: radial-gradient(circle at 50% 100%, #61ecc9, #32d498);
   border-radius: 0px 0px 8px 8px;
 }
