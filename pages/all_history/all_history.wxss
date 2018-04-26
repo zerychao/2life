@@ -90,11 +90,12 @@
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
-  line-height: 40px;
+  line-height: 46px;
   letter-spacing: normal;
   text-align: center;
   color: #a8a1e5;
 }
+
 .Dottedlineimg{
   width: 54px;
   height: 2px;

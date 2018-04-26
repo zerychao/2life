@@ -181,7 +181,7 @@
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
-  line-height: 40px;
+  line-height: 46px;
   letter-spacing: normal;
   text-align: center;
   color: #a8a1e5;
@@ -193,6 +193,7 @@
   height: 2px;
   object-fit: contain;
   margin-left: -20px; 
+  margin-bottom: 5px;
 }
 
 .diaryTitle {
