@@ -232,7 +232,7 @@
 .diaryCard {
   height: 210px;
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   left: 0px;
   right: 0px;
   display: flex;

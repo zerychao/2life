@@ -1,8 +1,8 @@
 {
   "pages":[
-    "pages/pair_details/pair_details",
     "pages/main/main",
-    "pages/all_history/all_history"
+    "pages/all_history/all_history",
+    "pages/pair_details/pair_details"
   ],
   "window":{
     "backgroundTextStyle":"light",
