@@ -10,7 +10,7 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     system: 30,
-    toView: ''
+    showModalStatus: false
   },
 
 
@@ -28,7 +28,7 @@ Page({
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true,
-          diaryList: util.parseDiaryData.dateToDayWeekday(dummyData.diaryList)
+          diaryList: util.parseDiaryData.dateToDayWeekday(dummyData.diaryList),
         })
       }
     } else {
@@ -65,7 +65,7 @@ Page({
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
-      hasUserInfo: true
+      hasUserInfo: true,
     })
   },
   bindKeyInput: function (e) {
@@ -90,14 +90,57 @@ Page({
       oriMesArr.push(myNewMes);
       this.setData({ mesArray: oriMesArr });
       this.setData({ inputValue: "" });
-      // this.setData({ toView: myNewMes });
-
     }
   },
   turnToAllhistory: function () {
     wx.navigateTo({
       url: '../all_history/all_history',
     })
+  },
+  vbhfbv: function () {
+    this.setData({
+      showModalStatus: true
+    })
+  },
+  showModal: function () {
+    // 显示遮罩层
+    var animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "ease",
+      delay: 0
+    })
+    this.animation = animation
+    animation.translateY(300).step()
+    this.setData({
+      animationData: animation.export(),
+      showModalStatus: true
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export()
+      })
+    }.bind(this), 200)
+  },
+  hideModal: function () {
+    // 隐藏遮罩层
+    var animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    animation.translateY(300).step()
+    this.setData({
+      animationData: animation.export(),
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export(),
+        showModalStatus: false
+      })
+    }.bind(this), 200)
   }
 
 })
