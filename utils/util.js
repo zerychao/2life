@@ -6,6 +6,29 @@ var deepCopy = obj => {
   return newObj
 }
 
+var parseWeekday = date => {
+  var date_new = date.split(/-/);
+  var year = parseInt(date_new[0]);
+  var month = parseInt(date_new[1]);
+  var day = parseInt(date_new[2]);
+  if (month == 1 || month == 2) {
+    month += 12;
+    year -= 1;
+  }
+  var week = (day + 2 * month + 3 * (month + 1) / 5 + year + year / 4 - year / 100 + year / 400) % 7;
+  week = parseInt(week);
+  switch(week+1){
+    case 1: return "Mon";
+    case 2: return "Tue";
+    case 3: return "Wed";
+    case 4: return "Thu";
+    case 5: return "Fri";
+    case 6: return "Sat";
+    case 7: return "Sun";
+    default: return "error";
+  }
+}
+
 module.exports = {
 
   getFullUrl: path => {
@@ -51,18 +74,18 @@ module.exports = {
         arr[i] = new Array();
       }
       arr[0][0] = arrtemp[0];
-      arr[0][0].weekday="Fri";
+      arr[0][0].weekday = parseWeekday(diaryList[0].date);
       var count = 0;
       for (var i = 1, j = 1; i < diaryList.length; i++ , j++) {
         if (diaryList[i].date == diaryList[i - 1].date) {
           arr[count][j] = arrtemp[i];
-          arr[count][j].weekday="Fri";
+          arr[count][j].weekday = parseWeekday(diaryList[i].date);
         }
         else {
           count++;
           j = 0;
           arr[count][j] = arrtemp[i];
-          arr[count][j].weekday="Fri";
+          arr[count][j].weekday = parseWeekday(diaryList[i].date);
         }
       }
       return arr;
@@ -74,7 +97,7 @@ module.exports = {
       for (var j = 0; j < arr2.length; j++) {
         var date_new = arr2[j].date.split(/-/);
         arr2[j].date = date_new[2];
-        arr2[j].weekday="Fri";
+        arr2[j].weekday = parseWeekday(diaryList[j].date);
       }
       return arr2;
     }
