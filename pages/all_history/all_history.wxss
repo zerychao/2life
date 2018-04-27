@@ -168,6 +168,41 @@
   height: 36px;
   position: absolute;
   /* bottom: 20px; 安卓改为0px */
-  background-image: radial-gradient(circle at 50% 100%, #61ecc9, #32d498);
   border-radius: 0px 0px 8px 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.emotion view{
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle at 50% 100%, #61afec, #328cd4);
+  border-radius: 0px 0px 8px 8px;
+}
+
+.face{
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  position: absolute;
+  top: 10px; 
+  left: 10px;
+}
+
+.facetext{
+  width: 74px;
+  height: 19px;
+  font-family: Avenir Next;
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+  position: absolute;
+  top: 9.5px;
+  left: 34px;
 }
