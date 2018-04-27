@@ -259,6 +259,9 @@
 .expandupId {
   width: 120px;
   height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .expandupimg {
   width: 24px;
@@ -267,6 +270,14 @@
   position: absolute;
   top: 15px;
   left: 28px; 
+}
+
+.DateHorizontal {
+  width: 68px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .date {
@@ -295,12 +306,29 @@
   display: block;
 }
 
+ .weekday{
+  width: 24px;
+  height: 14px;
+  font-family: AvenirNext;
+  font-size: 10px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #8580ae;
+  margin-left: -30px;
+  margin-top: 8px;
+ }
+
 .Dottedlineimg{
   width: 54px;
   height: 2px;
   object-fit: contain;
-  margin-left: -20px; 
-  margin-bottom: 5px; 
+  position: relative;
+  left:48px;
+  top: 5px;
 }
 
 .diaryTitle {

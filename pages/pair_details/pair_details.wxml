@@ -42,12 +42,17 @@
             <block wx:if="{{idx==0}}">
               <image class="expandupimg" src="../../resources/icons/Expandup.svg" bindtap="turnToAllhistory">Expandup</image>
             </block>
-            <view id="{{idx}}" class="date">
-              <text>{{item.date}}</text>
-            </view>
+              <view class="DateHorizontal">
+                <view id="{{idx}}" class="date">
+                  <text>{{item.date}}</text>
+                </view>
+                 <view class="weekday">
+                  {{item.weekday}}
+                </view> 
+              </view>
             <block wx:if="{{idx!=(diaryList.length-1)}}">
              <image class="Dottedlineimg" src="../../resources/icons/DottedLine.svg"></image> 
-            </block>
+            </block> 
           </view>
           <view class="diaryTitle">
             <text>{{item.title}}</text>
