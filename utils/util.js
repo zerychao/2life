@@ -1,5 +1,11 @@
 var baseData = require("../utils/base_data.js")
 
+var deepCopy = obj => {
+  var newObj = {}
+  newObj = JSON.parse(JSON.stringify(obj))
+  return newObj
+}
+
 module.exports = {
 
   getFullUrl: path => {
@@ -34,8 +40,7 @@ module.exports = {
         }
       }
       //
-      var arrtemp = new Array();
-      arrtemp = JSON.parse(JSON.stringify(diaryList));
+      var arrtemp = deepCopy(diaryList);
       for (var j = 0; j < arrtemp.length; j++) {
         var date_new = arrtemp[j].date.split(/-/);
         arrtemp[j].date = date_new[2];
@@ -45,16 +50,16 @@ module.exports = {
       for (var i = 0; i < arr.length; i++) {
         arr[i] = new Array();
       }
-      arr[0][0]=arrtemp[0];
+      arr[0][0] = arrtemp[0];
       var count = 0;
       for (var i = 1, j = 1; i < diaryList.length; i++ , j++) {
         if (diaryList[i].date == diaryList[i - 1].date) {
-          arr[count][j]=arrtemp[i];
+          arr[count][j] = arrtemp[i];
         }
         else {
           count++;
           j = 0;
-          arr[count][j]=arrtemp[i];
+          arr[count][j] = arrtemp[i];
         }
       }
       return arr;
@@ -62,9 +67,8 @@ module.exports = {
 
     // 实现日期只有日和星期的方法
     dateToDayWeekday: diaryList => {
-      var arr2 = new Array();
-      arr2=JSON.parse(JSON.stringify(diaryList));
-      for(var j=0;j<arr2.length;j++){
+      var arr2 = deepCopy(diaryList);
+      for (var j = 0; j < arr2.length; j++) {
         var date_new = arr2[j].date.split(/-/);
         arr2[j].date = date_new[2];
       }
@@ -72,5 +76,5 @@ module.exports = {
     }
 
   }
-  
+
 }
