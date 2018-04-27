@@ -45,7 +45,18 @@
             <text>{{item.title}}</text>
           </view>
           <view class="emotion" style="bottom:{{system}}px;">
-            <view wx:if="{{item.Emotiontype>1}}">蓝色</view>
+            <view wx:if="{{item.Emotiontype==1}}" style="background-image: radial-gradient(circle at 50% 100%, #61ecc9, #32d498);">
+              <image src="../../resources/icons/HappyFace.svg" class="face"></image>
+              <text class="facetext">Happy</text> 
+            </view>
+            <view wx:elif="{{item.Emotiontype==2}}" style="background-image: radial-gradient(circle at 50% 100%, #61afec, #328cd4);">
+              <image src="../../resources/icons/SadFace.svg" class="face"></image>
+              <text class="facetext">Sad</text> 
+            </view>  
+            <view wx:elif="{{item.Emotiontype==3}}" style="background-image: radial-gradient(circle at 50% 100%, #ec6161, #d43232);">
+              <image src="../../resources/icons/AngryFace.svg" class="face"></image>
+              <text class="facetext">Angry</text> 
+            </view>
             <view wx:else>黑色</view>
           </view>
         </view>
