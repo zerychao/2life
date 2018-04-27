@@ -212,7 +212,7 @@
   text-align: left;
   color: #8580ae;
   margin-left: -35px;
-  margin-top: 8px;
+  margin-top: 6px;
  }
 .Dottedlineimg{
   width: 54px;
@@ -220,7 +220,7 @@
   object-fit: contain;
   position: relative;
   left:48px;
-  top: 5px;
+  top: 3px;
 }
 
 .diaryTitle {
