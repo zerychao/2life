@@ -16,6 +16,9 @@
         <view class="outscroll" wx:for="{{diaryPartList}}" wx:for-item="itemy" wx:for-index="idy">
           <view class="dateDottedline">
             <view class="date"><text>{{itemy[0].date}}</text></view>
+            <view class="weekday">
+              {{itemy[0].weekday}}
+            </view>  
             <block wx:if="{{idy!=(diaryPartList.length-1)}}">
               <image class="Dottedlineimg" src="../../resources/icons/DottedLine.svg"></image> 
             </block>

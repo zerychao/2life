@@ -95,14 +95,28 @@
   text-align: center;
   color: #a8a1e5;
 }
-
+.weekday{
+  width: 29px;
+  height: 14px;
+  font-family: AvenirNext;
+  font-size: 10px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #8580ae;
+  margin-left: 27px;
+  margin-top: 10px;
+}
 .Dottedlineimg{
   width: 54px;
   height: 2px;
   object-fit: contain;
   transform: rotate(90deg);
   margin-left: 15px; 
-  margin-top: 60px; 
+  margin-top: 45px; 
 }
 .outscroll {
   height: 140px;
