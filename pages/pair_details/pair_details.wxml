@@ -20,7 +20,7 @@
   </view> 
 <!-- 聊天空间栏 -->
   <view class="messagespace">
-    <scroll-view class="messageSV" scroll-y="true" scroll-into-view="{{toView}}" scroll-top="0">
+    <scroll-view class="messageSV" scroll-y="true" scroll-into-view="{{toView}}" scroll-top="{{(mesArray.length-1)*61}}">
       <block wx:for="{{mesArray}}">
         <template is="{{item.mesType}}" data="{{mes:item.mesitem.mes,userInfo:item.mesitem.userInfo}}" />
       </block>
@@ -29,7 +29,7 @@
 <!-- 输入栏和发送键 -->
   <view class="inputSend">
     <image class="moreimg" src="../../resources/icons/More.svg"></image>
-    <input class="inputspace" value="{{inputValue}}" bindinput="bindKeyInput" bindblur="bindblurInput"></input>
+    <input class="inputspace" value="{{inputValue}}" bindinput="bindKeyInput"></input>
     <image class="sendimg" src="../../resources/icons/Send.svg" bindtap="sendMes"></image>
   </view>
 

@@ -90,7 +90,7 @@ Page({
       oriMesArr.push(myNewMes);
       this.setData({ mesArray: oriMesArr });
       this.setData({ inputValue: "" });
-      this.setData({ toView: myNewMes });
+      // this.setData({ toView: myNewMes });
 
     }
   },

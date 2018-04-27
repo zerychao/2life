@@ -51,26 +51,30 @@ module.exports = {
         arr[i] = new Array();
       }
       arr[0][0] = arrtemp[0];
+      arr[0][0].weekday="Fri";
       var count = 0;
       for (var i = 1, j = 1; i < diaryList.length; i++ , j++) {
         if (diaryList[i].date == diaryList[i - 1].date) {
           arr[count][j] = arrtemp[i];
+          arr[count][j].weekday="Fri";
         }
         else {
           count++;
           j = 0;
           arr[count][j] = arrtemp[i];
+          arr[count][j].weekday="Fri";
         }
       }
       return arr;
     },
 
-    // 实现日期只有日和星期的方法
+    // 实现日期只有日和增加星期的方法
     dateToDayWeekday: diaryList => {
       var arr2 = deepCopy(diaryList);
       for (var j = 0; j < arr2.length; j++) {
         var date_new = arr2[j].date.split(/-/);
         arr2[j].date = date_new[2];
+        arr2[j].weekday="Fri";
       }
       return arr2;
     }
