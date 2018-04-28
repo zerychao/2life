@@ -32,8 +32,17 @@ var parseWeekday = date => {
 module.exports = {
 
   getFullUrl: path => {
-    return baseData.baseUrl + path;
+    return baseData.baseUrl + path + '/';
   },
+
+  getStoredOpenId: () => {
+    return wx.getStorageSync('user_ids').openid
+  },
+
+  getStoredUserInfo: key => {
+    return wx.getStorageSync('user_userInfo')[key]
+  },
+
   formatTime: date => {
     const year = date.getFullYear()
     const month = date.getMonth() + 1
