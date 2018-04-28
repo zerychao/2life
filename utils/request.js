@@ -26,7 +26,7 @@ var storeUserInfo = callback => {
     success: res => {
       console.log('storeUserInfo():')
       console.log(res.data)
-      
+
     }
   })
 }
@@ -36,7 +36,7 @@ module.exports = {
   sendLoginCode : loginCode => {
     doRequest('POST', 'get_openId_action', { js_code: loginCode }, {
       success: res => { 
-        wx.setStorageSync('user_ids', res.data)
+        wx.setStorageSync('user_ids', res.data.data)
         storeUserInfo()
         console.log('sendLoginCode():')
         console.log(res.data)
