@@ -11,7 +11,8 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     save: "Save",
-    system: 20
+    system: 20,
+    showPair: false
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
@@ -74,7 +75,8 @@ Page({
   },
   savediary: function () {
     this.setData({
-      "save": "Saved"
+      "save": "Saved",
+      showPair: true
     });
   },
   turnToAllhistory: function () {
