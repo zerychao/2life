@@ -34,7 +34,7 @@ var storeUserInfo = callback => {
 module.exports = {
 
   sendLoginCode : loginCode => {
-    doRequest('POST', 'get_openId_action', { js_code: loginCode }, {
+    doRequest('GET', 'get_openId_action', { js_code: loginCode }, {
       success: res => { 
         wx.setStorageSync('user_ids', res.data.data)
         storeUserInfo()
