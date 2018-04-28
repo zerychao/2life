@@ -1,39 +1,39 @@
 <view class="container">
-<!-- 头像区 -->
+  <!-- 头像区 -->
   <view class="userinfos">
-  <!-- 自己的头像昵称 -->
-      <view class="myuserinfo">
+    <!-- 自己的头像昵称 -->
+    <view class="myuserinfo">
       <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
       <block wx:else>
         <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" style="width: 64px;height: 64px; margin: 0px;"></image>
         <text class="userinfo-nickname">{{userInfo.nickName}}</text>
       </block>
-    </view> 
-  <!-- 匹配对象的头像昵称 -->
-      <view class="pairuserinfo">
+    </view>
+    <!-- 匹配对象的头像昵称 -->
+    <view class="pairuserinfo">
       <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
       <block wx:else>
         <image class="pairuserinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
         <text class="pairuserinfo-nickname">{{userInfo.nickName}}</text>
       </block>
-    </view> 
-  </view> 
-<!-- 聊天空间栏 -->
+    </view>
+  </view>
+  <!-- 聊天空间栏 -->
   <view class="messagespace">
     <scroll-view class="messageSV" scroll-y="true" scroll-into-view="{{toView}}" scroll-top="{{(mesArray.length-1)*61}}">
       <block wx:for="{{mesArray}}">
         <template is="{{item.mesType}}" data="{{mes:item.mesitem.mes,userInfo:item.mesitem.userInfo}}" />
       </block>
-    </scroll-view>  
+    </scroll-view>
   </view>
-<!-- 输入栏和发送键 -->
+  <!-- 输入栏和发送键 -->
   <view class="inputSend">
     <image class="moreimg" src="../../resources/icons/More.svg" bindtap="vbhfbv"></image>
     <input class="inputspace" value="{{inputValue}}" bindinput="bindKeyInput"></input>
     <image class="sendimg" src="../../resources/icons/Send.svg" bindtap="sendMes"></image>
   </view>
 
-<!-- 滚动日志卡 -->
+  <!-- 滚动日志卡 -->
   <view class=" diaryCard">
     <scroll-view class="scrollview" scroll-x="true">
       <block class="diarybox" wx:for="{{diaryList}}" wx:for-item="item" wx:for-index="idx">
@@ -42,19 +42,19 @@
             <block wx:if="{{idx==0}}">
               <image class="expandupimg" src="../../resources/icons/Expandup.svg" bindtap="turnToAllhistory">Expandup</image>
             </block>
-              <view class="DateHorizontal">
-                <view id="{{idx}}" class="date">
-                  <text>{{item.date}}</text>
-                </view>
-                 <view class="weekday">
-                  {{item.weekday}}
-                </view> 
+            <view class="DateHorizontal">
+              <view id="{{idx}}" class="date">
+                <text>{{item.date}}</text>
               </view>
+              <view class="weekday">
+                {{item.weekday}}
+              </view>
+            </view>
             <block wx:if="{{idx!=(diaryList.length-1)}}">
-             <view class="Dottedlineimg-wrapper">
-             <image class="Dottedlineimg" src="../../resources/icons/DottedLine.svg"></image> 
-             </view> 
-            </block> 
+              <view class="Dottedlineimg-wrapper">
+                <image class="Dottedlineimg" src="../../resources/icons/DottedLine.svg"></image>
+              </view>
+            </block>
           </view>
           <view class="diaryTitle">
             <text>{{item.title}}</text>
@@ -62,15 +62,15 @@
           <view class="emotion" style="bottom:{{system}}px;">
             <view wx:if="{{item.Emotiontype==1}}" style="background-image: radial-gradient(circle at 50% 100%, #61ecc9, #32d498);">
               <image src="../../resources/icons/HappyFace.svg" class="face"></image>
-              <text class="facetext">Happy</text> 
+              <text class="facetext">Happy</text>
             </view>
             <view wx:elif="{{item.Emotiontype==2}}" style="background-image: radial-gradient(circle at 50% 100%, #61afec, #328cd4);">
               <image src="../../resources/icons/SadFace.svg" class="face"></image>
-              <text class="facetext">Sad</text> 
-            </view>  
+              <text class="facetext">Sad</text>
+            </view>
             <view wx:elif="{{item.Emotiontype==3}}" style="background-image: radial-gradient(circle at 50% 100%, #ec6161, #d43232);">
               <image src="../../resources/icons/AngryFace.svg" class="face"></image>
-              <text class="facetext">Angry</text> 
+              <text class="facetext">Angry</text>
             </view>
             <view wx:else>黑色</view>
           </view>
@@ -79,13 +79,13 @@
     </scroll-view>
   </view>
   <!-- 底部弹窗 -->
-    <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>    
-    <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
-      <button id="button1">Choose picture</button>
-      <button id="button2">Unpair</button>
-      <view id="buttonspace"></view>
-      <button id="button3" bindtap="hideModal">Cancel</button>
-    </view>
+  <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+  <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+    <button id="button1">Choose picture</button>
+    <button id="button2">Unpair</button>
+    <view id="buttonspace"></view>
+    <button id="button3" bindtap="hideModal">Cancel</button>
+  </view>
 
 
 </view>

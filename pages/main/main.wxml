@@ -12,7 +12,7 @@
   <!-- 文本框 -->
   <view class="diarybox">
     <textarea class="diarytitle" placeholder="What is going on today?" placeholder-style="color:#5b577d" />
-    <textarea class="diarytext" maxlength="-1" cursor-spacing="0"/>
+    <textarea class="diarytext" maxlength="-1" cursor-spacing="0" />
     <view class="save">
       <view id="savebutton">
         <text id="savetext" bindtap="savediary">{{save}}</text>
@@ -29,19 +29,19 @@
             <block wx:if="{{idx==0}}">
               <image class="expandupimg" src="../../resources/icons/Expandup.svg" bindtap="turnToAllhistory">Expandup</image>
             </block>
-              <view class="DateHorizontal">
-                <view id="{{idx}}" class="date">
-                  <text>{{item.date}}</text>
-                </view>
-                 <view class="weekday">
-                  {{item.weekday}}
-                </view> 
+            <view class="DateHorizontal">
+              <view id="{{idx}}" class="date">
+                <text>{{item.date}}</text>
               </view>
+              <view class="weekday">
+                {{item.weekday}}
+              </view>
+            </view>
             <block wx:if="{{idx!=(diaryList.length-1)}}">
-            <view class="Dottedlineimg-wrapper">
-             <image class="Dottedlineimg" src="../../resources/icons/DottedLine.svg"></image> 
-             </view>
-            </block> 
+              <view class="Dottedlineimg-wrapper">
+                <image class="Dottedlineimg" src="../../resources/icons/DottedLine.svg"></image>
+              </view>
+            </block>
           </view>
           <view class="diaryTitle">
             <text>{{item.title}}</text>
@@ -49,15 +49,15 @@
           <view class="emotion" style="bottom:{{system}}px;">
             <view wx:if="{{item.Emotiontype==1}}" style="background-image: radial-gradient(circle at 50% 100%, #61ecc9, #32d498);">
               <image src="../../resources/icons/HappyFace.svg" class="face"></image>
-              <text class="facetext">Happy</text> 
+              <text class="facetext">Happy</text>
             </view>
             <view wx:elif="{{item.Emotiontype==2}}" style="background-image: radial-gradient(circle at 50% 100%, #61afec, #328cd4);">
               <image src="../../resources/icons/SadFace.svg" class="face"></image>
-              <text class="facetext">Sad</text> 
-            </view>  
+              <text class="facetext">Sad</text>
+            </view>
             <view wx:elif="{{item.Emotiontype==3}}" style="background-image: radial-gradient(circle at 50% 100%, #ec6161, #d43232);">
               <image src="../../resources/icons/AngryFace.svg" class="face"></image>
-              <text class="facetext">Angry</text> 
+              <text class="facetext">Angry</text>
             </view>
             <view wx:else>黑色</view>
           </view>

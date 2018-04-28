@@ -17,7 +17,7 @@ var parseWeekday = date => {
   }
   var week = (day + 2 * month + 3 * (month + 1) / 5 + year + year / 4 - year / 100 + year / 400) % 7;
   week = parseInt(week);
-  switch(week+1){
+  switch (week + 1) {
     case 1: return "Mon";
     case 2: return "Tue";
     case 3: return "Wed";

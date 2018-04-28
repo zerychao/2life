@@ -4,7 +4,7 @@ var userInfo = app.globalData.userInfo
 
 module.exports = {
 
-  requestTest : callback => {
+  requestTest: callback => {
     wx.request({
       url: '',
       data: '',

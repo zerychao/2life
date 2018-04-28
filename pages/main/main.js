@@ -44,14 +44,14 @@ Page({
       })
     }
   },
-  onShow: function(){
+  onShow: function () {
     var that = this;
     wx.getSystemInfo({
       success: function (res) {
         console.log(res.system)
         var system = res.system.split(/ /)
-        console.log("system: "+system[0])
-        if (system[0]=="Android"){
+        console.log("system: " + system[0])
+        if (system[0] == "Android") {
           that.setData({
             "system": 0
           })
