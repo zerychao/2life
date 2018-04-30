@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: sketchtool 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
-    <title>890E1F96-04D1-4873-85DC-D9B3C4DC9439</title>
-    <desc>Created with sketchtool.</desc>
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon / Saving</title>
+    <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Indicator-/-Saved" transform="translate(-7.000000, -6.000000)" fill="#FFFFFF">
-            <g id="Icon-/-Success" transform="translate(7.000000, 6.000000)">
-                <path d="M6,12 C2.6862915,12 0,9.3137085 0,6 C0,2.6862915 2.6862915,0 6,0 C9.3137085,0 12,2.6862915 12,6 C12,9.3137085 9.3137085,12 6,12 Z M3.30769231,5.7 L2.5,6.6 L4.65384615,9 L9.5,3.9 L8.69230769,3 L4.65384615,7.2 L3.30769231,5.7 Z" id="Combined-Shape"></path>
-            </g>
-        </g>
+    <g id="Icon-/-Saving" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6,1 L6,3" id="Line" stroke="#FFFFFF"></path>
+        <path d="M6,9 L6,11" id="Line-Copy" stroke="#FFFFFF"></path>
+        <path d="M3,6 L1,6" id="Line" stroke="#FFFFFF"></path>
+        <path d="M11,6 L9,6" id="Line-Copy-2" stroke="#FFFFFF"></path>
+        <path d="M9.48651652,2.52659287 L8.02877855,3.98433085" id="Line-Copy-3" stroke="#FFFFFF"></path>
+        <path d="M2.54344273,2.51458231 L4.00118071,3.97232029" id="Line-Copy-7" stroke="#FFFFFF"></path>
+        <path d="M3.99922706,8.03189818 L2.54148909,9.48963615" id="Line-Copy-4" stroke="#FFFFFF"></path>
+        <path d="M9.47458395,9.51724484 L8.01684598,8.05950687" id="Line-Copy-8" stroke="#FFFFFF"></path>
     </g>
 </svg>
