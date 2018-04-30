@@ -185,7 +185,7 @@
 /************youMessage********************/
 
 .youMessage {
-  padding: 15px;
+  padding: 0 10px;
 }
 
 .youview {
