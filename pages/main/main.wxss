@@ -200,6 +200,17 @@
   left: 20px;
 }
 
+.savedEmotion{
+  width: 110px;
+  height: 36px;
+  border-radius: 18px;
+  background-color: rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 0.5px 1px 0 rgba(0, 0, 0, 0.5);
+  position: absolute;
+  left: 142px;
+  top: -5px;
+}
+
 .diaryCard {
   height: 200px;
   position: absolute;

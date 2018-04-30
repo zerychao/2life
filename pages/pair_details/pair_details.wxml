@@ -78,11 +78,11 @@
               <image src="../../resources/icons/HappyFace.svg" class="face"></image>
               <text class="facetext">Worried</text>
             </view>
-            <view wx:elif="{{item.emotion==6}}" style="background-image: background-image: radial-gradient(circle at 50% 100%, #ec6161, #d43232);">
+            <view wx:elif="{{item.emotion==6}}" style="background-image:radial-gradient(circle at 50% 100%, #ec6161, #d43232);">
               <image src="../../resources/icons/AngryFace.svg" class="face"></image>
               <text class="facetext">Disgusted</text>
             </view>
-            <view wx:else style="  background-image: radial-gradient(circle at 50% 100%, #ec6161, #d43232);">
+            <view wx:else style=" background-image: radial-gradient(circle at 50% 100%, #ec6161, #d43232);">
               <image src="../../resources/icons/AngryFace.svg" class="face"></image>
               <text class="facetext">Surprised</text>
             </view>
