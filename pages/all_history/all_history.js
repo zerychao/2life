@@ -77,9 +77,7 @@ Page({
         wx.setStorageSync('main_editing_diary_id', diary_id)
         wx.setStorageSync('main_editing_diary_title', res.data.data.diary.title)
         wx.setStorageSync('main_editing_diary_text', res.data.data.diary.content)
-        wx.navigateTo({
-          url: '../main/main',
-        })
+        wx.navigateBack()
       }
     })
   },
