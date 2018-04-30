@@ -160,9 +160,9 @@
   float: right;
   margin: 10px;
   max-width: 50%;
-  background-image: radial-gradient(circle at 50% 100%, #58d6b6, #32d498);
+  background-image: radial-gradient(circle at 50% 100%, #58d6b6, #32d498); 
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
+  border-radius: 10px; 
 }
 
 .myview .m .mes {
@@ -200,16 +200,15 @@
   position: relative;
   float: left;
   margin: 10px;
-  max-width: 50%;
-  border-radius: 10px;
-  background-image: radial-gradient(circle at 50% 98%, #3ca3f3, #328dd4);
+  max-width: 50%; 
+  background-image: radial-gradient(circle at 50% 98%, #3ca3f3, #328dd4); 
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
 }
 
 .youview .m .mes {
   position: relative;
   padding: 10px;
-  background: white;
   word-wrap: break-word;
   max-width: 90%;
   float: left;
@@ -221,12 +220,12 @@
   line-height: normal;
   letter-spacing: normal;
   text-align: left;
-  color: #fff;
+  color: #fff; 
 }
 
-.yk {
+ .yk {
   clear: both;
-}
+} 
 
 /*日记卡  */
 
