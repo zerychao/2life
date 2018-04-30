@@ -3,14 +3,14 @@
 const app = getApp()
 var util = require("../../utils/util.js")
 var dummyData = require("../../utils/dummy_data.js")
+var request = require("../../utils/request.js")
 
 var getData = (userInfo) => {
   return {
     userInfo: userInfo,
     hasUserInfo: true,
-    diaryList: util.parseDiaryData.dateToDayWeekday(dummyData.diaryList),
-    diaryTitle: 'diary_title_value',
-    diaryText: 'diary_text_value'
+    diaryList: util.parseDiaryData.dateToDayWeekday(util.getStoredRecentHistory()),
+    showPair: util.getStoredMatch()
   }
 }
 
@@ -71,11 +71,28 @@ Page({
       url: '../pair_details/pair_details'
     })
   },
+  bindDiaryTitleInput: (e) => {
+    wx.setStorageSync('main_editing_diary_title', e.detail.value)
+  },
+  bindDiaryTextInput: (e) => {
+    wx.setStorageSync('main_editing_diary_text', e.detail.value)
+  },
   savediary: function () {
     this.setData({
-      "save": "Saved",
-      showPair: true
-    });
+      save: "Saving"
+    })
+    request.saveDiary({ 
+      success: res => {
+        this.setData({
+          diaryList: util.parseDiaryData.dateToDayWeekday(res.data.data.diaries),
+          save: "Saved",
+          showPair: util.getStoredMatch(),
+          diaryTitle: '',
+          diaryText: ''
+        })
+        util.removeInvalidStorage()
+      }
+    })
   },
   turnToAllhistory: function () {
     wx.navigateTo({

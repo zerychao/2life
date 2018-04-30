@@ -1,4 +1,5 @@
 var request = require("/utils/request.js")
+var util = require("/utils/util.js")
 
 var a = res => {
   request.sendLoginCode(res.code)
@@ -7,10 +8,8 @@ var a = res => {
 //app.js
 App({
   onLaunch: function () {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    // 清除无效缓存
+    util.removeInvalidStorage()
 
     // 登录
     wx.login({

@@ -33,16 +33,44 @@ var storeUserInfo = callback => {
   })
 }
 
+var getFullUserInfo = (callback) => {
+  doRequest('GET', 'get_user_action', {
+    openId: util.getStoredOpenId()
+  }, {
+      success: res => {
+        wx.setStorageSync('user_recent_history', res.data.data.diaries)
+        console.log('getFullUserInfo():')
+        console.log(res.data.data)
+        if (callback && callback.success) {
+          callback.success(res)
+        }
+      }
+    })
+}
+
 module.exports = {
 
-  sendLoginCode : loginCode => {
+  sendLoginCode: loginCode => {
     doRequest('GET', 'get_openId_action', { js_code: loginCode }, {
       success: res => { 
         wx.setStorageSync('user_ids', res.data.data)
-        storeUserInfo()
         console.log('sendLoginCode():')
         console.log(res.data.data)
+        storeUserInfo()
+        getFullUserInfo()
       }
     })
   },
+
+  saveDiary: (callback) => {
+    doRequest('POST', 'emotion', util.getStoredEditingDiary(), {
+      success: res => {
+        wx.setStorageSync('user_match', res.data.data.match)
+        console.log('saveDiary():')
+        console.log(res.data.data)
+        getFullUserInfo(callback)
+      }
+    })
+  }
+
 }

@@ -151,7 +151,6 @@
 .diaryblock {
   width: 100px;
   height: 90px;
-  margin-left: 10px;
   margin-top: 10px;
   font-family: Avenir Next;
   font-size: 16px;

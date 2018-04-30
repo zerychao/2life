@@ -1,5 +1,9 @@
 var baseData = require("../utils/base_data.js")
 
+var getStoredOpenId = () => {
+  return wx.getStorageSync('user_ids').openid
+}
+
 var deepCopy = obj => {
   var newObj = {}
   newObj = JSON.parse(JSON.stringify(obj))
@@ -35,12 +39,31 @@ module.exports = {
     return baseData.baseUrl + path + '/';
   },
 
-  getStoredOpenId: () => {
-    return wx.getStorageSync('user_ids').openid
-  },
+  getStoredOpenId: getStoredOpenId,
 
   getStoredUserInfo: key => {
     return wx.getStorageSync('user_userInfo')[key]
+  },
+
+  getStoredRecentHistory: () => {
+    return wx.getStorageSync('user_recent_history')
+  },
+
+  getStoredEditingDiary: () => {
+    return {
+      openid: getStoredOpenId(),
+      title: wx.getStorageSync('main_editing_diary_title'),
+      diary: wx.getStorageSync('main_editing_diary_text')
+    }
+  },
+
+  getStoredMatch: () => {
+    return wx.getStorageSync('user_match')
+  },
+
+  removeInvalidStorage: () => {
+    wx.removeStorageSync('main_editing_diary_title')
+    wx.removeStorageSync('main_editing_diary_text')
   },
 
   formatTime: date => {
@@ -64,18 +87,18 @@ module.exports = {
     splitByDate: diaryList => {
       // 遍历对象计算共有多少相同的日期
       var n = 1;
-      var date = diaryList[0].date;
+      var publish_date = diaryList[0].publish_date;
       for (var l = 1; l < diaryList.length; l++) {
-        if (date != diaryList[l].date) {
-          date = diaryList[l].date;
+        if (publish_date != diaryList[l].publish_date) {
+          publish_date = diaryList[l].publish_date;
           n++;
         }
       }
       //
       var arrtemp = deepCopy(diaryList);
       for (var j = 0; j < arrtemp.length; j++) {
-        var date_new = arrtemp[j].date.split(/-/);
-        arrtemp[j].date = date_new[2];
+        var date_new = arrtemp[j].publish_date.split(/-/);
+        arrtemp[j].publish_date = date_new[2];
       }
       //
       var arr = new Array(n);
@@ -83,32 +106,32 @@ module.exports = {
         arr[i] = new Array();
       }
       arr[0][0] = arrtemp[0];
-      arr[0][0].weekday = parseWeekday(diaryList[0].date);
+      arr[0][0].weekday = parseWeekday(diaryList[0].publish_date);
       var count = 0;
       for (var i = 1, j = 1; i < diaryList.length; i++ , j++) {
-        if (diaryList[i].date == diaryList[i - 1].date) {
+        if (diaryList[i].publish_date == diaryList[i - 1].publish_date) {
           arr[count][j] = arrtemp[i];
-          arr[count][j].weekday = parseWeekday(diaryList[i].date);
+          arr[count][j].weekday = parseWeekday(diaryList[i].publish_date);
         }
         else {
           count++;
           j = 0;
           arr[count][j] = arrtemp[i];
-          arr[count][j].weekday = parseWeekday(diaryList[i].date);
+          arr[count][j].weekday = parseWeekday(diaryList[i].publish_date);
         }
       }
-      return arr;
+      return arr.reverse();
     },
 
     // 实现日期只有日和增加星期的方法
     dateToDayWeekday: diaryList => {
       var arr2 = deepCopy(diaryList);
       for (var j = 0; j < arr2.length; j++) {
-        var date_new = arr2[j].date.split(/-/);
-        arr2[j].date = date_new[2];
-        arr2[j].weekday = parseWeekday(diaryList[j].date);
+        var date_new = arr2[j].publish_date.split(/-/);
+        arr2[j].publish_date = date_new[2];
+        arr2[j].weekday = parseWeekday(diaryList[j].publish_date);
       }
-      return arr2;
+      return arr2.reverse();
     }
 
   }
