@@ -20,7 +20,6 @@ Page({
     inputValue: "",
     mesArray: [],
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     system: 30,
     showModalStatus: false,
     showPair: util.getStoredMatch(),
