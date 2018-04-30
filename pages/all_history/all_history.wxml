@@ -27,7 +27,7 @@
           </view>
           <!-- 内层水平方向的滚动 -->
           <scroll-view id="{{idy}}" class="scrollviewx" scroll-x="true">
-            <view class="innerscroll" wx:for="{{itemy}}" wx:for-item="itemx" wx:for-index="idx">
+            <view class="innerscroll" wx:for="{{itemy}}" wx:for-item="itemx" wx:for-index="idx" bindtap="editDiary" bindlongpress="deleteDiary" data-diaryid="{{itemx.diary_id}}">
               <view class="diaryblock">{{itemx.title}}</view>
               <view class="emotion" style="bottom:{{system}}px;">
                 <view wx:if="{{itemx.emotion==1}}" style="background-image: radial-gradient(circle at 50% 100%, #61ecc9, #32d498);">

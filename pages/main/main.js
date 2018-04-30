@@ -14,15 +14,13 @@ var getData = (userInfo) => {
   }
 }
 
-var refresh = (that, res) => {
+var refresh = (that) => {
   that.setData({
-    diaryList: util.parseDiaryData.dateToDayWeekday(res.data.data.diaries),
+    diaryList: util.parseDiaryData.dateToDayWeekday(util.getStoredRecentHistory()),
     save: "Save",
-    diaryTitle: '',
-    diaryText: '',
-    nowEditingId: -1
+    diaryTitle: wx.getStorageSync('main_editing_diary_title'),
+    diaryText: wx.getStorageSync('main_editing_diary_text')
   })
-  util.removeInvalidStorage()
 }
 
 var order = ['red', 'yellow', 'blue', 'green', 'red']
@@ -33,8 +31,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     save: "Save",
     system: 20,
-    showPair: false,
-    nowEditingId: -1
+    showPair: false
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
@@ -69,6 +66,7 @@ Page({
         }
       }
     })
+    refresh(this)
   },
   getUserInfo: function (e) {
     console.log(e)
@@ -102,18 +100,21 @@ Page({
       this.setData({
         save: "Saving"
       })
-      if (this.data.nowEditingId == -1) {
-        request.saveNewDiary({ 
+      var nowEditingId = wx.getStorageSync('main_editing_diary_id')
+      if (nowEditingId == '' || nowEditingId == -1) {
+        request.saveNewDiary({
           success: res => {
             this.setData({
               showPair: util.getStoredMatch()
             })
+            util.removeInvalidStorage()
             refresh(this, res)
           }
         })
       } else {
-        request.saveEditedDiary(this.data.nowEditingId, {
+        request.saveEditedDiary(nowEditingId, {
           success: res => {
+            util.removeInvalidStorage()
             refresh(this, res)
           }
         })
@@ -121,19 +122,17 @@ Page({
     }
   },
   editDiary: function (e) {
-    var index = e.currentTarget.id.split('_')[1]
-    console.log(index)
-    var diary_id = util.getStoredRecentHistory()[index].diary_id
+    var diary_id = e.currentTarget.dataset.diaryid
     request.getFullDiary(diary_id, {
       success: (res) => {
+        wx.setStorageSync('main_editing_diary_id', diary_id)
+        wx.setStorageSync('main_editing_diary_title', res.data.data.diary.title)
+        wx.setStorageSync('main_editing_diary_text', res.data.data.diary.content)
         this.setData({
           save: "Save",
           diaryTitle: res.data.data.diary.title,
-          diaryText: res.data.data.diary.content,
-          nowEditingId: diary_id
+          diaryText: res.data.data.diary.content
         })
-        wx.setStorageSync('main_editing_diary_title', res.data.data.diary.title)
-        wx.setStorageSync('main_editing_diary_text', res.data.data.diary.content)
       }
     })
   },
@@ -146,9 +145,7 @@ Page({
       confirmText: 'Confirm',
       success: (res) => {
         if (res.confirm) {
-          var index = e.currentTarget.id.split('_')[1]
-          console.log(index)
-          var diary_id = util.getStoredRecentHistory()[index].diary_id
+          var diary_id = e.currentTarget.dataset.diaryid
           request.deleteDiary(diary_id, {
             success: res => {
               refresh(that, res)
@@ -160,6 +157,7 @@ Page({
     
   },
   turnToAllhistory: function () {
+    util.removeInvalidStorage()
     wx.navigateTo({
       url: '../all_history/all_history',
     })

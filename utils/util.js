@@ -49,6 +49,10 @@ module.exports = {
     return wx.getStorageSync('user_recent_history')
   },
 
+  getStoredAllHistory: () => {
+    return wx.getStorageSync('user_all_history')
+  },
+
   getStoredEditingDiary: () => {
     return {
       openId: getStoredOpenId(),
@@ -62,6 +66,7 @@ module.exports = {
   },
 
   removeInvalidStorage: () => {
+    wx.removeStorageSync('main_editing_diary_id')
     wx.removeStorageSync('main_editing_diary_title')
     wx.removeStorageSync('main_editing_diary_text')
   },
@@ -134,6 +139,20 @@ module.exports = {
       return arr2;
     }
 
+  },
+
+  showUI: {
+    showDeleteConfirm: callback => {
+      wx.showModal({
+        title: 'Delete',
+        content: 'Do you really want to delete this diary? It cannot be restored.',
+        cancelText: 'Cancel',
+        confirmText: 'Confirm',
+        success: callback.success,
+        fail: callback.fail,
+        complete: callback.complete
+      })
+    }
   }
 
 }

@@ -112,6 +112,18 @@ module.exports = {
         getFullUserInfo(callback)
       }
     })
+  },
+
+  getAllHistory: () => {
+    doRequest('GET', 'get_user_diary_action', {
+      openId: util.getStoredOpenId()
+    }, {
+        success: (res) => {
+          wx.setStorageSync('user_all_history', res.data.data.diaries)
+          console.log('getAllHistory():')
+          console.log(res.data.data)
+        }
+      })
   }
 
 }

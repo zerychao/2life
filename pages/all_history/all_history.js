@@ -3,6 +3,7 @@
 const app = getApp()
 var util = require("../../utils/util.js")
 var dummyData = require("../../utils/dummy_data.js")
+var request = require("../../utils/request.js")
 
 var getData = (userInfo) => {
   return {
@@ -10,6 +11,13 @@ var getData = (userInfo) => {
     hasUserInfo: true,
     diaryPartList: util.parseDiaryData.splitByDate(util.getStoredRecentHistory())
   }
+}
+
+var refresh = (that, res) => {
+  that.setData({
+    diaryPartList: util.parseDiaryData.splitByDate(res.data.data.diaries),
+  })
+  util.removeInvalidStorage()
 }
 
 Page({
@@ -37,6 +45,7 @@ Page({
         }
       })
     }
+    request.getAllHistory()
   },
   onShow: function () {
     var that = this;
@@ -61,4 +70,32 @@ Page({
       hasUserInfo: true
     })
   },
+  editDiary: function (e) {
+    var diary_id = e.currentTarget.dataset.diaryid
+    request.getFullDiary(diary_id, {
+      success: (res) => {
+        wx.setStorageSync('main_editing_diary_id', diary_id)
+        wx.setStorageSync('main_editing_diary_title', res.data.data.diary.title)
+        wx.setStorageSync('main_editing_diary_text', res.data.data.diary.content)
+        wx.navigateTo({
+          url: '../main/main',
+        })
+      }
+    })
+  },
+  deleteDiary: function (e) {
+    var that = this
+    util.showUI.showDeleteConfirm({
+      success: (res) => {
+        if (res.confirm) {
+          var diary_id = e.currentTarget.dataset.diaryid
+          request.deleteDiary(diary_id, {
+            success: res => {
+              refresh(that, res)
+            }
+          })
+        }
+      }
+    })
+  }
 })

@@ -166,6 +166,10 @@
   white-space: normal;
 }
 
+.diaryid {
+  display: none;
+}
+
 .emotion {
   width: 120px;
   height: 36px;
