@@ -25,7 +25,7 @@
     </view>
   </view>
   <!-- 文本框 -->
-  <view class="diarybox">
+  <view class="diarybox" id="{{emotion}}">
     <textarea class="diarytitle" placeholder="What is going on today?" placeholder-style="color:#5b577d" value="{{diaryTitle}}" bindinput="updateDiaryTitle" />
     <textarea class="diarytext" maxlength="-1" cursor-spacing="0" value="{{diaryText}}"  bindinput="updateDiaryText" />
     <view class="save">
@@ -66,10 +66,11 @@
           <image src="../../resources/icons/AngryFace.svg" class="face"></image>
           <text class="facetext">Disgusted</text>
         </view>
-        <view class="savedEmotion" wx:else style="width: 110px;">
+        <view class="savedEmotion" wx:elif="{{emotion==7}}" style="width: 110px;">
           <image src="../../resources/icons/AngryFace.svg" class="face"></image>
           <text class="facetext">Surprised</text>
         </view>
+        <view wx:else></view>
     </view>
   </view>
 
