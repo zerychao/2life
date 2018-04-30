@@ -30,19 +30,38 @@
             <view class="innerscroll" wx:for="{{itemy}}" wx:for-item="itemx" wx:for-index="idx" bindtap="editDiary" bindlongpress="deleteDiary" data-diaryid="{{itemx.diary_id}}">
               <view class="diaryblock">{{itemx.title}}</view>
               <view class="emotion" style="bottom:{{system}}px;">
-                <view wx:if="{{itemx.emotion==1}}" style="background-image: radial-gradient(circle at 50% 100%, #61ecc9, #32d498);">
+                <view wx:if="{{itemx.emotion==0}}" style="background-image: radial-gradient(circle at 50% 103%, #504c6f, #3d3a54);">
+                  <image src="../../resources/icons/AngryFace.svg" class="face"></image>
+                  <text class="facetext">Peaceful</text>
+                </view>
+                <view wx:elif="{{itemx.emotion==1}}" style="background-image: radial-gradient(circle at 50% 100%, #61ecc9, #32d498);">
                   <image src="../../resources/icons/HappyFace.svg" class="face"></image>
                   <text class="facetext">Happy</text>
                 </view>
-                <view wx:elif="{{itemx.emotion==4}}" style="background-image: radial-gradient(circle at 50% 100%, #61afec, #328cd4);">
-                  <image src="../../resources/icons/SadFace.svg" class="face"></image>
-                  <text class="facetext">Sad</text>
+                <view wx:elif="{{itemx.emotion==2}}" style="background-image: radial-gradient(circle at 50% 100%, #61ecc9, #32d498);">
+                  <image src="../../resources/icons/HappyFace.svg" class="face"></image>
+                  <text class="facetext">Satisfied</text>
                 </view>
                 <view wx:elif="{{itemx.emotion==3}}" style="background-image: radial-gradient(circle at 50% 100%, #ec6161, #d43232);">
                   <image src="../../resources/icons/AngryFace.svg" class="face"></image>
                   <text class="facetext">Angry</text>
                 </view>
-                <view wx:else>黑色</view>
+                <view wx:elif="{{itemx.emotion==4}}" style="background-image: radial-gradient(circle at 50% 100%, #61afec, #328cd4);">
+                  <image src="../../resources/icons/SadFace.svg" class="face"></image>
+                  <text class="facetext">Sad</text>
+                </view>
+                <view wx:elif="{{itemx.emotion==5}}" style="background-image: radial-gradient(circle at 50% 100%, #61afec, #328cd4);">
+                  <image src="../../resources/icons/HappyFace.svg" class="face"></image>
+                  <text class="facetext">Worried</text>
+                </view>
+                <view wx:elif="{{itemx.emotion==6}}" style="background-image: background-image: radial-gradient(circle at 50% 100%, #ec6161, #d43232);">
+                  <image src="../../resources/icons/AngryFace.svg" class="face"></image>
+                  <text class="facetext">Disgusted</text>
+                </view>
+                <view wx:else style="background-image: radial-gradient(circle at 50% 100%, #ec6161, #d43232);">
+                  <image src="../../resources/icons/AngryFace.svg" class="face"></image>
+                  <text class="facetext">Surprised</text>
+                </view>
               </view>
             </view>
           </scroll-view>
