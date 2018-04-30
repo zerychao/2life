@@ -30,11 +30,11 @@
     <textarea class="diarytext" maxlength="-1" cursor-spacing="0" value="{{diaryText}}"  bindinput="updateDiaryText" />
     <view class="save">
       <button id="savebutton" bindtap="savediary" wx:if="{{save}}">
-        <image id="saveimg" src="../../resources/icons/save.svg"></image>
+        <image id="saveimg" src="../../resources/icons/Save.svg"></image>
         <text id="savetext">Save</text>
       </button>
       <button id="savebutton" style="width: 70px;" wx:else>
-        <image id="saveimg"  src="../../resources/icons/saving.svg"></image>
+        <image id="saveimg"  src="../../resources/icons/Saving.svg"></image>
         <text style="left: 26px;" id="savetext"> Saving</text>
       </button>
     </view>
