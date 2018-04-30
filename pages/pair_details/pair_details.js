@@ -16,6 +16,14 @@ var getData = (userInfo) => {
   }
 }
 
+var refresh = that => {
+  that.setData({
+    mesArray: util.parseMessageData(util.getStoredChatHistory()) 
+  });
+}
+
+var timer
+
 Page({
   data: {
     userInfo: {},
@@ -30,6 +38,13 @@ Page({
 
   onLoad: function () {
     this.setData(getData(util.getStoredUserInfo()))
+    timer = setInterval(() => {
+      request.getChatHistory(util.getStoredChatroomId(), {
+        success: res => {
+          refresh(this)
+        }
+      })
+    }, 5000)
   },
   onShow: function () {
     var that = this;
@@ -46,6 +61,9 @@ Page({
       }
     })
   },
+  onUnload: function () {
+    clearInterval(timer)
+  },
   bindKeyInput: function (e) {
     this.setData({
       inputValue: e.detail.value,
@@ -55,6 +73,7 @@ Page({
   },
 
   sendMes: function () {
+    var that = this
     var oriMesArr = this.data.mesArray;
     var newMes = this.data.inputValue;
     if (newMes != "") {
@@ -68,6 +87,11 @@ Page({
       oriMesArr.push(myNewMes);
       this.setData({ mesArray: oriMesArr });
       this.setData({ inputValue: "" });
+      request.sendMessageViaHttp(newMes, {
+        success: res => {
+          refresh(that)
+        }
+      })
     }
   },
 

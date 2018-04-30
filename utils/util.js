@@ -48,8 +48,8 @@ var parseWeekday = date => {
 
 module.exports = {
 
-  getFullUrl: path => {
-    return baseData.baseUrl + path + '/';
+  getHttpFullUrl: path => {
+    return baseData.baseUrl + baseData.httpRoot + path + '/';
   },
 
   getStoredOpenId: getStoredOpenId,
@@ -81,6 +81,10 @@ module.exports = {
   },
 
   getStoredMatchUser: getStoredMatchUser,
+
+  getStoredChatroomId: () => {
+    return wx.getStorageSync('user_chatroom_id')
+  },
 
   getStoredChatHistory : () => {
     return wx.getStorageSync('user_chat_history')
@@ -146,7 +150,7 @@ module.exports = {
           arr[count][j].weekday = parseWeekday(diaryList[i].publish_date);
         }
       }
-      return arr.reverse();
+      return arr;
     },
 
     // 实现日期只有日和增加星期的方法

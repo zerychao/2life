@@ -3,7 +3,7 @@ var util = require("../utils/util.js")
 var doRequest = (method, shortUrl, data, callback, header) => {
   var that = this
   wx.request({
-    url: util.getFullUrl(shortUrl),
+    url: util.getHttpFullUrl(shortUrl),
     data: data,
     method: method,
     header: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -173,6 +173,22 @@ module.exports = {
         console.log('unpair():')
         console.log(res.data)
         callback.success(res)
+      }
+    })
+  },
+
+  getChatHistory: getChatHistory,
+
+  sendMessageViaHttp: (content, callback) => {
+    doRequest('POST', 'send_message_via_http', {
+      pair_id: util.getStoredChatroomId(),
+      openId: util.getStoredOpenId(),
+      content: content
+    }, {
+      success: res => {
+        console.log('sendMessageViaHttp():')
+        console.log(res.data)
+        getChatHistory(callback)
       }
     })
   }
