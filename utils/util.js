@@ -45,6 +45,10 @@ module.exports = {
     return wx.getStorageSync('user_userInfo')[key]
   },
 
+  getStoredUserInfo: () => {
+    return wx.getStorageSync('user_userInfo')
+  },
+
   getStoredRecentHistory: () => {
     return wx.getStorageSync('user_recent_history')
   },

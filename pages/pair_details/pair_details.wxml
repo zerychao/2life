@@ -3,11 +3,8 @@
   <view class="userinfos">
     <!-- 自己的头像昵称 -->
     <view class="myuserinfo">
-      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-      <block wx:else>
-        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" style="width: 64px;height: 64px; margin: 0px;"></image>
-        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      </block>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" style="width: 64px;height: 64px; margin: 0px;"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </view>
     <!-- 匹配对象的头像昵称 -->
     <view class="pairuserinfo">

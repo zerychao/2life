@@ -44,6 +44,7 @@ Page({
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
         this.setData(getData(res.userInfo))
+        refresh(this)
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
@@ -51,6 +52,7 @@ Page({
         success: res => {
           app.globalData.userInfo = res.userInfo
           this.setData(getData(res.userInfo))
+          refresh(this)
         }
       })
     }
@@ -78,6 +80,7 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+    refresh(this)
   },
   contact: function () {
     wx.navigateTo({
