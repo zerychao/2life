@@ -26,7 +26,9 @@ var storeUserInfo = callback => {
     success: res => {
       console.log('storeUserInfo():')
       console.log(res.data)
-
+      if (res.data.status === 'success') {
+        console.log('Login complete.')
+      }
     }
   })
 }
@@ -39,7 +41,7 @@ module.exports = {
         wx.setStorageSync('user_ids', res.data.data)
         storeUserInfo()
         console.log('sendLoginCode():')
-        console.log(res.data)
+        console.log(res.data.data)
       }
     })
   },

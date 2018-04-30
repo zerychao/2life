@@ -29,8 +29,8 @@
   </view>
   <!-- 文本框 -->
   <view class="diarybox">
-    <textarea class="diarytitle" placeholder="What is going on today?" placeholder-style="color:#5b577d" />
-    <textarea class="diarytext" maxlength="-1" cursor-spacing="0" />
+    <textarea class="diarytitle" placeholder="What is going on today?" placeholder-style="color:#5b577d" value="{{diaryTitle}}" />
+    <textarea class="diarytext" maxlength="-1" cursor-spacing="0" value="{{diaryText}}"/>
     <view class="save">
       <view id="savebutton">
         <text id="savetext" bindtap="savediary">{{save}}</text>
