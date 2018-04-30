@@ -22,6 +22,27 @@ var refresh = that => {
   });
 }
 
+var sendMessage = (newMes, that) => {
+  var oriMesArr = that.data.mesArray;
+  if (newMes != "") {
+    var myNewMes = {
+      mesType: "myItem",
+      mesitem: {
+        userInfo: that.data.userInfo,
+        mes: newMes
+      }
+    };
+    oriMesArr.push(myNewMes);
+    that.setData({ mesArray: oriMesArr });
+    that.setData({ inputValue: "" });
+    request.sendMessageViaHttp(newMes, {
+      success: res => {
+        refresh(that)
+      }
+    })
+  }
+}
+
 var timer
 
 Page({
@@ -73,26 +94,17 @@ Page({
   },
 
   sendMes: function () {
+    sendMessage(this.data.inputValue, this)
+  },
+
+  sendDiary: function (e) {
     var that = this
-    var oriMesArr = this.data.mesArray;
-    var newMes = this.data.inputValue;
-    if (newMes != "") {
-      var myNewMes = {
-        mesType: "myItem",
-        mesitem: {
-          userInfo: this.data.userInfo,
-          mes: newMes
-        }
-      };
-      oriMesArr.push(myNewMes);
-      this.setData({ mesArray: oriMesArr });
-      this.setData({ inputValue: "" });
-      request.sendMessageViaHttp(newMes, {
-        success: res => {
-          refresh(that)
-        }
-      })
-    }
+    var diary_id = e.currentTarget.dataset.diaryid
+    request.getFullDiary(diary_id, {
+      success: (res) => {
+        sendMessage(res.data.data.diary.title + '\n=========\n' + res.data.data.diary.content, that)
+      }
+    })
   },
 
   showMenu: function () {

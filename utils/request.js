@@ -180,15 +180,16 @@ module.exports = {
   getChatHistory: getChatHistory,
 
   sendMessageViaHttp: (content, callback) => {
+    var pair_id = util.getStoredChatroomId()
     doRequest('POST', 'send_message_via_http', {
-      pair_id: util.getStoredChatroomId(),
+      pair_id: pair_id,
       openId: util.getStoredOpenId(),
       content: content
     }, {
       success: res => {
         console.log('sendMessageViaHttp():')
         console.log(res.data)
-        getChatHistory(callback)
+        getChatHistory(pair_id, callback)
       }
     })
   }

@@ -49,7 +49,7 @@
               </view>
             </block>
           </view>
-          <view class="diaryTitle">
+          <view class="diaryTitle" ontap="sendDiary" data-diaryid="{{item.diary_id}}">
             <text>{{item.title}}</text>
           </view>
           <view class="emotion" style="bottom:{{system}}px;">
