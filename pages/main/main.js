@@ -17,7 +17,7 @@ var getData = (userInfo) => {
 var refresh = (that) => {
   that.setData({
     diaryList: util.parseDiaryData.dateToDayWeekday(util.getStoredRecentHistory()),
-    save: "Save",
+    save: true,
     diaryTitle: wx.getStorageSync('main_editing_diary_title'),
     diaryText: wx.getStorageSync('main_editing_diary_text'),
     showPair: util.getStoredMatch(),
@@ -31,7 +31,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    save: "Save",
+    save: true,
     system: 20,
     showPair: util.getStoredMatch(),
     pair: util.getStoredMatchUser()
@@ -96,7 +96,7 @@ Page({
       util.showUI.showNullInputNotice()
     } else {
       this.setData({
-        save: "Saving"
+        save: false
       })
       var nowEditingId = wx.getStorageSync('main_editing_diary_id')
       if (nowEditingId == '' || nowEditingId == -1) {
@@ -127,7 +127,7 @@ Page({
         wx.setStorageSync('main_editing_diary_title', res.data.data.diary.title)
         wx.setStorageSync('main_editing_diary_text', res.data.data.diary.content)
         this.setData({
-          save: "Save",
+          save: true,
           diaryTitle: res.data.data.diary.title,
           diaryText: res.data.data.diary.content
         })
