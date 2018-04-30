@@ -27,6 +27,7 @@ var storeUserInfo = callback => {
       console.log('storeUserInfo():')
       console.log(res.data)
       if (res.data.status === 'success') {
+        getFullUserInfo()
         console.log('Login complete.')
       }
     }
@@ -38,6 +39,7 @@ var getFullUserInfo = (callback) => {
     openId: util.getStoredOpenId()
   }, {
     success: res => {
+      wx.setStorageSync('user_userInfo', res.data.data.user)
       wx.setStorageSync('user_recent_history', res.data.data.diaries)
       wx.setStorageSync('user_match', res.data.data.match)
       console.log('getFullUserInfo():')
@@ -45,6 +47,19 @@ var getFullUserInfo = (callback) => {
       if (callback && callback.success) {
         callback.success(res)
       }
+      
+    }
+  })
+}
+
+var getChatHistory = (pair_id, callback) => {
+  doRequest('GET', 'get_history_action', { 
+    pair_id: pair_id 
+  }, {
+    success: res => {
+      wx.setStorageSync('user_chat_history', res.data.data)
+      console.log('getChatHistory():')
+      console.log(res.data.data)
     }
   })
 }
@@ -52,13 +67,14 @@ var getFullUserInfo = (callback) => {
 module.exports = {
 
   sendLoginCode: loginCode => {
-    doRequest('GET', 'get_openId_action', { js_code: loginCode }, {
+    doRequest('GET', 'get_openId_action', { 
+      js_code: loginCode 
+    }, {
       success: res => { 
         wx.setStorageSync('user_ids', res.data.data)
         console.log('sendLoginCode():')
         console.log(res.data.data)
         storeUserInfo()
-        getFullUserInfo()
       }
     })
   },
@@ -135,6 +151,19 @@ module.exports = {
         wx.setStorageSync('user_match', '')
         console.log('unpair():')
         console.log(res.data)
+        callback.success(res)
+      }
+    })
+  },
+
+  getChatroomId: callback => {
+    doRequest('GET', 'get_pair_action', {
+      openId: util.getStoredOpenId()
+    }, {
+      success: res => {
+        wx.setStorageSync('user_chatroom_id', res.data.data.pair_id)
+        console.log('getChatroomId():')
+        console.log(res.data.data)
         callback.success(res)
       }
     })
