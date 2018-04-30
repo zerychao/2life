@@ -264,15 +264,6 @@
   align-items: center;
 }
 
-.expandupimg {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-  position: absolute;
-  top: 15px;
-  left: 28px;
-}
-
 .DateHorizontal {
   height: 40px;
   display: flex;

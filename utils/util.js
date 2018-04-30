@@ -142,6 +142,7 @@ module.exports = {
   },
 
   showUI: {
+
     showDeleteConfirm: callback => {
       wx.showModal({
         title: 'Delete',
@@ -152,7 +153,26 @@ module.exports = {
         fail: callback.fail,
         complete: callback.complete
       })
+    },
+
+    showNullInputNotice: () => {
+      wx.showModal({
+        title: 'Save',
+        content: 'It seems that you didn\'t enter anything.',
+        showCancel: false,
+        confirmText: 'OK'
+      })
+    },
+
+    showPairDetailsMenu: callback => {
+      wx.showActionSheet({
+        itemList: ['Choose Picture', 'Unpair'],
+        success: callback.success,
+        fail: callback.fail,
+        complete: callback.complete
+      })
     }
+
   }
 
 }

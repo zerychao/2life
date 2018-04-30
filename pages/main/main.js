@@ -1,6 +1,5 @@
-//index.js
-//获取应用实例
 const app = getApp()
+
 var util = require("../../utils/util.js")
 var dummyData = require("../../utils/dummy_data.js")
 var request = require("../../utils/request.js")
@@ -19,7 +18,8 @@ var refresh = (that) => {
     diaryList: util.parseDiaryData.dateToDayWeekday(util.getStoredRecentHistory()),
     save: "Save",
     diaryTitle: wx.getStorageSync('main_editing_diary_title'),
-    diaryText: wx.getStorageSync('main_editing_diary_text')
+    diaryText: wx.getStorageSync('main_editing_diary_text'),
+    showPair: wx.getStorageSync('user_match')
   })
 }
 
@@ -31,7 +31,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     save: "Save",
     system: 20,
-    showPair: false
+    showPair: wx.getStorageSync('user_match')
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
@@ -90,12 +90,7 @@ Page({
   savediary: function () {
     var storedEditingDiary = util.getStoredEditingDiary()
     if (storedEditingDiary.title == '' && storedEditingDiary.content == '') {
-      wx.showModal({
-        title: 'Save',
-        content: 'It seems that you didn\'t enter anything.',
-        showCancel: false,
-        confirmText: 'OK'
-      })
+      util.showUI.showNullInputNotice()
     } else {
       this.setData({
         save: "Saving"
@@ -138,11 +133,7 @@ Page({
   },
   deleteDiary: function(e) {
     var that = this
-    wx.showModal({
-      title: 'Delete',
-      content: 'Do you really want to delete this diary? It cannot be restored.',
-      cancelText: 'Cancel',
-      confirmText: 'Confirm',
+    util.showUI.showDeleteConfirm({
       success: (res) => {
         if (res.confirm) {
           var diary_id = e.currentTarget.dataset.diaryid
@@ -154,7 +145,6 @@ Page({
         }
       }
     })
-    
   },
   turnToAllhistory: function () {
     util.removeInvalidStorage()

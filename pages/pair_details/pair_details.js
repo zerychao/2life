@@ -1,7 +1,17 @@
-//获取应用实例
 var app = getApp()
+
 var util = require("../../utils/util.js")
 var dummyData = require("../../utils/dummy_data.js")
+var request = require("../../utils/request.js")
+
+var getData = (userInfo) => {
+  return {
+    userInfo: userInfo,
+    hasUserInfo: true,
+    diaryList: util.parseDiaryData.dateToDayWeekday(util.getStoredRecentHistory())
+  }
+}
+
 Page({
   data: {
     userInfo: {},
@@ -13,34 +23,21 @@ Page({
     showModalStatus: false
   },
 
-
   onLoad: function () {
     if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true,
-        diaryList: util.parseDiaryData.dateToDayWeekday(dummyData.diaryList)
-      })
+      this.setData(getData(app.globalData.userInfo))
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true,
-          diaryList: util.parseDiaryData.dateToDayWeekday(dummyData.diaryList),
-        })
+        this.setData(getData(res.userInfo))
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
           app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true,
-            diaryList: util.parseDiaryData.dateToDayWeekday(dummyData.diaryList)
-          })
+          this.setData(getData(res.userInfo))
         }
       })
     }
@@ -92,55 +89,24 @@ Page({
       this.setData({ inputValue: "" });
     }
   },
-  turnToAllhistory: function () {
-    wx.navigateTo({
-      url: '../all_history/all_history',
+
+  showMenu: function () {
+    util.showUI.showPairDetailsMenu({
+      success: res => {
+        switch(res.tapIndex) {
+          case 0:
+            wx.chooseImage()
+            break;
+          case 1:
+            request.unpair({
+              success: res1 => {
+                wx.navigateBack()
+              }
+            })
+            break;
+        }
+      }
     })
-  },
-  vbhfbv: function () {
-    this.setData({
-      showModalStatus: true
-    })
-  },
-  showModal: function () {
-    // 显示遮罩层
-    var animation = wx.createAnimation({
-      duration: 200,
-      timingFunction: "ease",
-      delay: 0
-    })
-    this.animation = animation
-    animation.translateY(300).step()
-    this.setData({
-      animationData: animation.export(),
-      showModalStatus: true
-    })
-    setTimeout(function () {
-      animation.translateY(0).step()
-      this.setData({
-        animationData: animation.export()
-      })
-    }.bind(this), 200)
-  },
-  hideModal: function () {
-    // 隐藏遮罩层
-    var animation = wx.createAnimation({
-      duration: 200,
-      timingFunction: "linear",
-      delay: 0
-    })
-    this.animation = animation
-    animation.translateY(300).step()
-    this.setData({
-      animationData: animation.export(),
-    })
-    setTimeout(function () {
-      animation.translateY(0).step()
-      this.setData({
-        animationData: animation.export(),
-        showModalStatus: false
-      })
-    }.bind(this), 200)
   }
 
 })

@@ -39,6 +39,7 @@ var getFullUserInfo = (callback) => {
   }, {
     success: res => {
       wx.setStorageSync('user_recent_history', res.data.data.diaries)
+      // wx.setStorageSync('user_match', res.data.data.match)
       console.log('getFullUserInfo():')
       console.log(res.data.data)
       if (callback && callback.success) {
@@ -118,12 +119,25 @@ module.exports = {
     doRequest('GET', 'get_user_diary_action', {
       openId: util.getStoredOpenId()
     }, {
-        success: (res) => {
-          wx.setStorageSync('user_all_history', res.data.data.diaries)
-          console.log('getAllHistory():')
-          console.log(res.data.data)
-        }
-      })
+      success: (res) => {
+        wx.setStorageSync('user_all_history', res.data.data.diaries)
+        console.log('getAllHistory():')
+        console.log(res.data.data)
+      }
+    })
+  },
+
+  unpair: callback => {
+    doRequest('GET', 'depair_action', {
+      openId: util.getStoredOpenId()
+    }, {
+      success: res => {
+        wx.setStorageSync('user_match', '')
+        console.log('unpair():')
+        console.log(res.data)
+        callback.success(res)
+      }
+    })
   }
 
 }

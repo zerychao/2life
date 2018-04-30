@@ -1,6 +1,5 @@
-//index.js
-//获取应用实例
 const app = getApp()
+
 var util = require("../../utils/util.js")
 var dummyData = require("../../utils/dummy_data.js")
 var request = require("../../utils/request.js")
