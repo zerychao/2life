@@ -16,12 +16,12 @@ var doRequest = (method, shortUrl, data, callback, header) => {
 var storeUserInfo = callback => {
   doRequest('POST', 'store_action', {
     openId: util.getStoredOpenId(),
-    nickName: util.getStoredUserInfo('nickName'),
-    avatarUrl: util.getStoredUserInfo('avatarUrl'),
-    gender: util.getStoredUserInfo('gender'),
-    province: util.getStoredUserInfo('province'),
-    city: util.getStoredUserInfo('city'),
-    country: util.getStoredUserInfo('country')
+    nickName: util.getStoredUserInfo().nickName,
+    avatarUrl: util.getStoredUserInfo().avatarUrl,
+    gender: util.getStoredUserInfo().gender,
+    province: util.getStoredUserInfo().province,
+    city: util.getStoredUserInfo().city,
+    country: util.getStoredUserInfo().country
   }, {
     success: res => {
       console.log('storeUserInfo():')

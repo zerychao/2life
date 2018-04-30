@@ -16,7 +16,7 @@
   </view>
   <!-- 聊天空间栏 -->
   <view class="messagespace">
-    <scroll-view class="messageSV" scroll-y="true" scroll-into-view="{{toView}}" scroll-top="{{(mesArray.length-1)*61}}">
+    <scroll-view class="messageSV" scroll-y="true" scroll-into-view="{{toView}}" scroll-top="{{messageSVScrollTop}}">
       <block wx:for="{{mesArray}}">
         <template is="{{item.mesType}}" data="{{mes:item.mesitem.mes,userInfo:item.mesitem.userInfo}}" />
       </block>

@@ -22,6 +22,10 @@ var refresh = that => {
   });
 }
 
+var scrollToBottom = that => {
+  that.setData({ messageSVScrollTop: 9007199254740992 })
+}
+
 var sendMessage = (newMes, that) => {
   var oriMesArr = that.data.mesArray;
   if (newMes != "") {
@@ -38,6 +42,7 @@ var sendMessage = (newMes, that) => {
     request.sendMessageViaHttp(newMes, {
       success: res => {
         refresh(that)
+        scrollToBottom(that)
       }
     })
   }
@@ -66,6 +71,7 @@ Page({
         }
       })
     }, 5000)
+    scrollToBottom(this)
   },
   onShow: function () {
     var that = this;

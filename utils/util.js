@@ -54,10 +54,6 @@ module.exports = {
 
   getStoredOpenId: getStoredOpenId,
 
-  getStoredUserInfo: key => {
-    return wx.getStorageSync('user_userInfo')[key]
-  },
-
   getStoredUserInfo: getStoredUserInfo,
 
   getStoredRecentHistory: () => {
