@@ -37,15 +37,15 @@ var getFullUserInfo = (callback) => {
   doRequest('GET', 'get_user_action', {
     openId: util.getStoredOpenId()
   }, {
-      success: res => {
-        wx.setStorageSync('user_recent_history', res.data.data.diaries)
-        console.log('getFullUserInfo():')
-        console.log(res.data.data)
-        if (callback && callback.success) {
-          callback.success(res)
-        }
+    success: res => {
+      wx.setStorageSync('user_recent_history', res.data.data.diaries)
+      console.log('getFullUserInfo():')
+      console.log(res.data.data)
+      if (callback && callback.success) {
+        callback.success(res)
       }
-    })
+    }
+  })
 }
 
 module.exports = {
@@ -62,7 +62,7 @@ module.exports = {
     })
   },
 
-  saveDiary: (callback) => {
+  saveNewDiary: (callback) => {
     doRequest('POST', 'emotion', util.getStoredEditingDiary(), {
       success: res => {
         wx.setStorageSync('user_match', res.data.data.match)
@@ -71,6 +71,34 @@ module.exports = {
         getFullUserInfo(callback)
       }
     })
-  }
+  },
 
+  getFullDiary: (diaryId, callback) => {
+    doRequest('GET', 'get_diary_action', {
+      diaryId: diaryId
+    }, {
+      success: (res) => {
+        console.log('getFullDiary():')
+        console.log(res.data.data)
+        if (callback && callback.success) {
+          callback.success(res)
+        }
+      }
+    })
+  },
+
+  saveEditedDiary: (diaryId, callback) => {
+    var storedEditingDiary = util.getStoredEditingDiary()
+    doRequest('POST', 'alt_diary_action', {
+      diaryId: diaryId,
+      title: storedEditingDiary.title,
+      content: storedEditingDiary.diary
+    }, {
+      success: (res) => {
+        console.log('saveEditedDiary():')
+        console.log(res.data.data)
+        getFullUserInfo(callback)
+      }
+    })
+  }
 }

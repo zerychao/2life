@@ -29,8 +29,8 @@
   </view>
   <!-- 文本框 -->
   <view class="diarybox">
-    <textarea class="diarytitle" placeholder="What is going on today?" placeholder-style="color:#5b577d" value="{{diaryTitle}}" bindinput="bindDiaryTitleInput" />
-    <textarea class="diarytext" maxlength="-1" cursor-spacing="0" value="{{diaryText}}"  bindinput="bindDiaryTextInput" />
+    <textarea class="diarytitle" placeholder="What is going on today?" placeholder-style="color:#5b577d" value="{{diaryTitle}}" bindinput="updateDiaryTitle" />
+    <textarea class="diarytext" maxlength="-1" cursor-spacing="0" value="{{diaryText}}"  bindinput="updateDiaryText" />
     <view class="save">
       <view id="savebutton">
         <text id="savetext" bindtap="savediary">{{save}}</text>
@@ -61,7 +61,7 @@
               </view>
             </block>
           </view>
-          <view class="diaryTitle">
+          <view id="diaryTitle_{{idx}}" class="diaryTitle" bindtap="editDiary">
             <text>{{item.title}}</text>
           </view>
           <view class="emotion" style="bottom:{{system}}px;">

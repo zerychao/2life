@@ -14,6 +14,17 @@ var getData = (userInfo) => {
   }
 }
 
+var refresh = (that, res) => {
+  that.setData({
+    diaryList: util.parseDiaryData.dateToDayWeekday(res.data.data.diaries),
+    save: "Save",
+    diaryTitle: '',
+    diaryText: '',
+    nowEditingId: -1
+  })
+  util.removeInvalidStorage()
+}
+
 var order = ['red', 'yellow', 'blue', 'green', 'red']
 Page({
   data: {
@@ -22,7 +33,8 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     save: "Save",
     system: 20,
-    showPair: false
+    showPair: false,
+    nowEditingId: -1
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
@@ -71,26 +83,47 @@ Page({
       url: '../pair_details/pair_details'
     })
   },
-  bindDiaryTitleInput: (e) => {
+  updateDiaryTitle: function (e) {
     wx.setStorageSync('main_editing_diary_title', e.detail.value)
   },
-  bindDiaryTextInput: (e) => {
+  updateDiaryText: function (e) {
     wx.setStorageSync('main_editing_diary_text', e.detail.value)
   },
   savediary: function () {
     this.setData({
       save: "Saving"
     })
-    request.saveDiary({ 
-      success: res => {
+    if (this.data.nowEditingId == -1) {
+      request.saveNewDiary({ 
+        success: res => {
+          this.setData({
+            showPair: util.getStoredMatch()
+          })
+          refresh(this, res)
+        }
+      })
+    } else {
+      request.saveEditedDiary(this.data.nowEditingId, {
+        success: res => {
+          refresh(this, res)
+        }
+      })
+    }
+  },
+  editDiary: function (e) {
+    var index = util.getStoredRecentHistory().length - e.currentTarget.id.split('_')[1] - 1
+    console.log(index)
+    var diary_id = util.getStoredRecentHistory()[index].diary_id
+    request.getFullDiary(diary_id, {
+      success: (res) => {
         this.setData({
-          diaryList: util.parseDiaryData.dateToDayWeekday(res.data.data.diaries),
-          save: "Saved",
-          showPair: util.getStoredMatch(),
-          diaryTitle: '',
-          diaryText: ''
+          save: "Save",
+          diaryTitle: res.data.data.diary.title,
+          diaryText: res.data.data.diary.content,
+          nowEditingId: diary_id
         })
-        util.removeInvalidStorage()
+        wx.setStorageSync('main_editing_diary_title', res.data.data.diary.title)
+        wx.setStorageSync('main_editing_diary_text', res.data.data.diary.content)
       }
     })
   },

@@ -1,7 +1,7 @@
 var request = require("/utils/request.js")
 var util = require("/utils/util.js")
 
-var a = res => {
+var sendLoginCode = res => {
   request.sendLoginCode(res.code)
 }
 
@@ -16,7 +16,7 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         console.log('loginCode: ' + res.code)
-        a(res)
+        sendLoginCode(res)
       }
     })
 
