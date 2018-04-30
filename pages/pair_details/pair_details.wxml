@@ -11,11 +11,8 @@
     </view>
     <!-- 匹配对象的头像昵称 -->
     <view class="pairuserinfo">
-      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-      <block wx:else>
-        <image class="pairuserinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-        <text class="pairuserinfo-nickname">{{userInfo.nickName}}</text>
-      </block>
+      <image class="pairuserinfo-avatar" src="{{pair.avatarUrl}}" background-size="cover"></image>
+      <text class="pairuserinfo-nickname">{{pair.nickName}}</text>
     </view>
   </view>
   <!-- 聊天空间栏 -->

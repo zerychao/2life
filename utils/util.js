@@ -65,6 +65,15 @@ module.exports = {
     return wx.getStorageSync('user_match')
   },
 
+  getStoredMatchUser: () => {
+    var userMatch = wx.getStorageSync('user_match')
+    if (userMatch && userMatch.user) {
+      return userMatch.user
+    } else {
+      return {}
+    }
+  },
+
   removeInvalidStorage: () => {
     wx.removeStorageSync('main_editing_diary_id')
     wx.removeStorageSync('main_editing_diary_title')

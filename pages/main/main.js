@@ -9,7 +9,8 @@ var getData = (userInfo) => {
     userInfo: userInfo,
     hasUserInfo: true,
     diaryList: util.parseDiaryData.dateToDayWeekday(util.getStoredRecentHistory()),
-    showPair: util.getStoredMatch()
+    showPair: util.getStoredMatch(),
+    pair: util.getStoredMatchUser()
   }
 }
 
@@ -19,7 +20,8 @@ var refresh = (that) => {
     save: "Save",
     diaryTitle: wx.getStorageSync('main_editing_diary_title'),
     diaryText: wx.getStorageSync('main_editing_diary_text'),
-    showPair: wx.getStorageSync('user_match')
+    showPair: util.getStoredMatch(),
+    pair: util.getStoredMatchUser()
   })
 }
 
@@ -31,7 +33,8 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     save: "Save",
     system: 20,
-    showPair: wx.getStorageSync('user_match')
+    showPair: util.getStoredMatch(),
+    pair: util.getStoredMatchUser()
   },
   onLoad: function () {
     if (app.globalData.userInfo) {

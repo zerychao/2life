@@ -39,7 +39,7 @@ var getFullUserInfo = (callback) => {
   }, {
     success: res => {
       wx.setStorageSync('user_recent_history', res.data.data.diaries)
-      // wx.setStorageSync('user_match', res.data.data.match)
+      wx.setStorageSync('user_match', res.data.data.match)
       console.log('getFullUserInfo():')
       console.log(res.data.data)
       if (callback && callback.success) {

@@ -8,7 +8,9 @@ var getData = (userInfo) => {
   return {
     userInfo: userInfo,
     hasUserInfo: true,
-    diaryList: util.parseDiaryData.dateToDayWeekday(util.getStoredRecentHistory())
+    diaryList: util.parseDiaryData.dateToDayWeekday(util.getStoredRecentHistory()),
+    showPair: util.getStoredMatch(),
+    pair: util.getStoredMatchUser()
   }
 }
 
@@ -20,7 +22,9 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     system: 30,
-    showModalStatus: false
+    showModalStatus: false,
+    showPair: util.getStoredMatch(),
+    pair: util.getStoredMatchUser()
   },
 
   onLoad: function () {
