@@ -92,7 +92,7 @@ module.exports = {
     doRequest('POST', 'alt_diary_action', {
       diaryId: diaryId,
       title: storedEditingDiary.title,
-      content: storedEditingDiary.diary
+      content: storedEditingDiary.content
     }, {
       success: (res) => {
         console.log('saveEditedDiary():')
@@ -100,5 +100,18 @@ module.exports = {
         getFullUserInfo(callback)
       }
     })
+  },
+
+  deleteDiary: (diaryId, callback) => {
+    doRequest('POST', 'delete_diary_action', {
+      diaryId: diaryId
+    }, {
+      success: (res) => {
+        console.log('deleteDiary():')
+        console.log(res.data)
+        getFullUserInfo(callback)
+      }
+    })
   }
+
 }

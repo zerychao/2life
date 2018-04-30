@@ -90,28 +90,38 @@ Page({
     wx.setStorageSync('main_editing_diary_text', e.detail.value)
   },
   savediary: function () {
-    this.setData({
-      save: "Saving"
-    })
-    if (this.data.nowEditingId == -1) {
-      request.saveNewDiary({ 
-        success: res => {
-          this.setData({
-            showPair: util.getStoredMatch()
-          })
-          refresh(this, res)
-        }
+    var storedEditingDiary = util.getStoredEditingDiary()
+    if (storedEditingDiary.title == '' && storedEditingDiary.content == '') {
+      wx.showModal({
+        title: 'Save',
+        content: 'It seems that you didn\'t enter anything.',
+        showCancel: false,
+        confirmText: 'OK'
       })
     } else {
-      request.saveEditedDiary(this.data.nowEditingId, {
-        success: res => {
-          refresh(this, res)
-        }
+      this.setData({
+        save: "Saving"
       })
+      if (this.data.nowEditingId == -1) {
+        request.saveNewDiary({ 
+          success: res => {
+            this.setData({
+              showPair: util.getStoredMatch()
+            })
+            refresh(this, res)
+          }
+        })
+      } else {
+        request.saveEditedDiary(this.data.nowEditingId, {
+          success: res => {
+            refresh(this, res)
+          }
+        })
+      }
     }
   },
   editDiary: function (e) {
-    var index = util.getStoredRecentHistory().length - e.currentTarget.id.split('_')[1] - 1
+    var index = e.currentTarget.id.split('_')[1]
     console.log(index)
     var diary_id = util.getStoredRecentHistory()[index].diary_id
     request.getFullDiary(diary_id, {
@@ -126,6 +136,28 @@ Page({
         wx.setStorageSync('main_editing_diary_text', res.data.data.diary.content)
       }
     })
+  },
+  deleteDiary: function(e) {
+    var that = this
+    wx.showModal({
+      title: 'Delete',
+      content: 'Do you really want to delete this diary? It cannot be restored.',
+      cancelText: 'Cancel',
+      confirmText: 'Confirm',
+      success: (res) => {
+        if (res.confirm) {
+          var index = e.currentTarget.id.split('_')[1]
+          console.log(index)
+          var diary_id = util.getStoredRecentHistory()[index].diary_id
+          request.deleteDiary(diary_id, {
+            success: res => {
+              refresh(that, res)
+            }
+          })
+        }
+      }
+    })
+    
   },
   turnToAllhistory: function () {
     wx.navigateTo({

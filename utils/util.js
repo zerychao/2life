@@ -51,9 +51,9 @@ module.exports = {
 
   getStoredEditingDiary: () => {
     return {
-      openid: getStoredOpenId(),
+      openId: getStoredOpenId(),
       title: wx.getStorageSync('main_editing_diary_title'),
-      diary: wx.getStorageSync('main_editing_diary_text')
+      content: wx.getStorageSync('main_editing_diary_text')
     }
   },
 
@@ -131,7 +131,7 @@ module.exports = {
         arr2[j].publish_date = date_new[2];
         arr2[j].weekday = parseWeekday(diaryList[j].publish_date);
       }
-      return arr2.reverse();
+      return arr2;
     }
 
   }

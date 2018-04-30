@@ -61,7 +61,7 @@
               </view>
             </block>
           </view>
-          <view id="diaryTitle_{{idx}}" class="diaryTitle" bindtap="editDiary">
+          <view id="diaryTitle_{{idx}}" class="diaryTitle" bindtap="editDiary" bindlongpress='deleteDiary'>
             <text>{{item.title}}</text>
           </view>
           <view class="emotion" style="bottom:{{system}}px;">
