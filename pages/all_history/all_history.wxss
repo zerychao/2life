@@ -92,7 +92,7 @@
   font-stretch: normal;
   line-height: 46px;
   letter-spacing: normal;
-  text-align: center;
+  text-align: center; 
   color: #a8a1e5;
 }
 
@@ -152,6 +152,7 @@
   width: 100px;
   height: 90px;
   margin-top: 10px;
+  margin-left: 10px;
   font-family: Avenir Next;
   font-size: 16px;
   font-weight: bold;
@@ -159,7 +160,6 @@
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  text-align: center;
   color: #000;
   word-break: break-all;
   overflow: hidden;

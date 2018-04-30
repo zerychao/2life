@@ -208,7 +208,7 @@
   background-color: rgba(0, 0, 0, 0.25);
   box-shadow: inset 0 0.5px 1px 0 rgba(0, 0, 0, 0.5);
   position: absolute;
-  left: 142px;
+  left: 112.5px;
   top: -5px;
 }
 
