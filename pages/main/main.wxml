@@ -10,20 +10,25 @@
   </view>
 <!-- 获取自己和匹配对象的头像昵称 -->
   <view class="userinfos" wx:else>
-    <!-- 自己的头像昵称 -->
-    <view class="myuserinfo">
-      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-      <block wx:else>
-        <image class="myuserinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" style="width: 64px;height: 64px; margin: 0px;"></image>
-        <text class="myuserinfo-nickname">{{userInfo.nickName}}</text>
-      </block>
-    </view>
-    <!-- 匹配对象的头像昵称 -->
-    <view class="pairuserinfo">
-      <image class="pairuserinfo-avatar" src="{{pair.avatarUrl}}" background-size="cover" bindtap="contact"></image>
-      <text class="pairuserinfo-nickname">{{pair.nickName}}</text>
+    <view class="userinfosbox">
+      <!-- 自己的头像昵称 -->
+      <view class="myuserinfo">
+        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+        <block wx:else>
+          <image class="myuserinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" style="width: 64px;height: 64px; margin: 0px;"></image>
+          <text class="myuserinfo-nickname">{{userInfo.nickName}}</text>
+        </block>
+      </view>
+      <!-- 匹配对象的头像昵称 -->
+      <view class="pairuserinfo">
+        <image class="pairuserinfo-avatar" src="{{pair.avatarUrl}}" background-size="cover" bindtap="contact"></image>
+        <text class="pairuserinfo-nickname">{{pair.nickName}}</text>
+      </view>
     </view>
   </view>
+
+
+
   <!-- 文本框 -->
   <view class="diarybox" id="{{emotion}}">
     <textarea class="diarytitle" placeholder="What is going on today?" placeholder-style="color:#5b577d" value="{{diaryTitle}}" bindinput="updateDiaryTitle" />

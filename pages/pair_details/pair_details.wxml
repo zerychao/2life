@@ -1,15 +1,17 @@
 <view class="container">
   <!-- 头像区 -->
   <view class="userinfos">
-    <!-- 自己的头像昵称 -->
-    <view class="myuserinfo">
-      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" style="width: 64px;height: 64px; margin: 0px;"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </view>
-    <!-- 匹配对象的头像昵称 -->
-    <view class="pairuserinfo">
-      <image class="pairuserinfo-avatar" src="{{pair.avatarUrl}}" background-size="cover"></image>
-      <text class="pairuserinfo-nickname">{{pair.nickName}}</text>
+    <view class="userinfosbox">
+      <!-- 自己的头像昵称 -->
+      <view class="myuserinfo">
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" style="width: 64px;height: 64px; margin: 0px;"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      </view>
+      <!-- 匹配对象的头像昵称 -->
+      <view class="pairuserinfo">
+        <image class="pairuserinfo-avatar" src="{{pair.avatarUrl}}" background-size="cover"></image>
+        <text class="pairuserinfo-nickname">{{pair.nickName}}</text>
+      </view>
     </view>
   </view>
   <!-- 聊天空间栏 -->
