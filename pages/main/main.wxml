@@ -29,14 +29,14 @@
     <textarea class="diarytitle" placeholder="What is going on today?" placeholder-style="color:#5b577d" value="{{diaryTitle}}" bindinput="updateDiaryTitle" />
     <textarea class="diarytext" maxlength="-1" cursor-spacing="0" value="{{diaryText}}"  bindinput="updateDiaryText" />
     <view class="save">
-      <view id="savebutton" wx:if="{{save}}">
-        <image id="saveimg" bindtap="savediary" src="../../resources/icons/save.svg"></image>
+      <button id="savebutton" bindtap="savediary" wx:if="{{save}}">
+        <image id="saveimg" src="../../resources/icons/save.svg"></image>
         <text id="savetext">Save</text>
-      </view>
-      <view id="savebutton" wx:else>
+      </button>
+      <button id="savebutton" style="width: 70px;" wx:else>
         <image id="saveimg"  src="../../resources/icons/saving.svg"></image>
-        <text id="savetext">Saving</text>
-      </view>
+        <text style="left: 26px;" id="savetext"> Saving</text>
+      </button>
     </view>
   </view>
 
