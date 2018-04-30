@@ -78,6 +78,7 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+    refresh(this)
   },
   contact: function () {
     wx.navigateTo({
