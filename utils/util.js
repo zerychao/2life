@@ -4,6 +4,19 @@ var getStoredOpenId = () => {
   return wx.getStorageSync('user_ids').openid
 }
 
+var getStoredUserInfo = () => {
+  return wx.getStorageSync('user_userInfo')
+}
+
+var getStoredMatchUser = () => {
+  var userMatch = wx.getStorageSync('user_match')
+  if (userMatch && userMatch.user) {
+    return userMatch.user
+  } else {
+    return {}
+  }
+}
+
 var deepCopy = obj => {
   var newObj = {}
   newObj = JSON.parse(JSON.stringify(obj))
@@ -45,9 +58,7 @@ module.exports = {
     return wx.getStorageSync('user_userInfo')[key]
   },
 
-  getStoredUserInfo: () => {
-    return wx.getStorageSync('user_userInfo')
-  },
+  getStoredUserInfo: getStoredUserInfo,
 
   getStoredRecentHistory: () => {
     return wx.getStorageSync('user_recent_history')
@@ -69,13 +80,10 @@ module.exports = {
     return wx.getStorageSync('user_match')
   },
 
-  getStoredMatchUser: () => {
-    var userMatch = wx.getStorageSync('user_match')
-    if (userMatch && userMatch.user) {
-      return userMatch.user
-    } else {
-      return {}
-    }
+  getStoredMatchUser: getStoredMatchUser,
+
+  getStoredChatHistory : () => {
+    return wx.getStorageSync('user_chat_history')
   },
 
   removeInvalidStorage: () => {
@@ -152,6 +160,19 @@ module.exports = {
       return arr2;
     }
 
+  },
+
+  parseMessageData: (messageList) => {
+    var newList = deepCopy(messageList)
+    for (var i = 0; i < newList.length; i++) {
+      var isItMe = messageList[i].openId == getStoredOpenId()
+      newList[i].mesType = (isItMe ? 'myItem' : 'youItem')
+      newList[i].mesitem = {
+        userInfo: (isItMe ? getStoredUserInfo() : getStoredMatchUser()),
+        mes: messageList[i].content
+      }
+    }
+    return newList
   },
 
   showUI: {

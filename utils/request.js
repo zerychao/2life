@@ -44,12 +44,30 @@ var getFullUserInfo = (callback) => {
       wx.setStorageSync('user_match', res.data.data.match)
       console.log('getFullUserInfo():')
       console.log(res.data.data)
+      if (res.data.data.match) {
+        getChatroomId({})
+      }
       if (callback && callback.success) {
         callback.success(res)
       }
-      
     }
   })
+}
+
+var getChatroomId = callback => {
+  doRequest('GET', 'get_pair_action', {
+    openId: util.getStoredOpenId()
+  }, {
+      success: res => {
+        wx.setStorageSync('user_chatroom_id', res.data.data.pair_id)
+        console.log('getChatroomId():')
+        console.log(res.data.data)
+        if (callback && callback.success) {
+          callback.success(res)
+        }
+        getChatHistory(res.data.data.pair_id, callback)
+      }
+    })
 }
 
 var getChatHistory = (pair_id, callback) => {
@@ -57,9 +75,12 @@ var getChatHistory = (pair_id, callback) => {
     pair_id: pair_id 
   }, {
     success: res => {
-      wx.setStorageSync('user_chat_history', res.data.data)
+      wx.setStorageSync('user_chat_history', res.data.data.messages)
       console.log('getChatHistory():')
       console.log(res.data.data)
+      if (callback && callback.success) {
+        callback.success(res)
+      }
     }
   })
 }
@@ -151,19 +172,6 @@ module.exports = {
         wx.setStorageSync('user_match', '')
         console.log('unpair():')
         console.log(res.data)
-        callback.success(res)
-      }
-    })
-  },
-
-  getChatroomId: callback => {
-    doRequest('GET', 'get_pair_action', {
-      openId: util.getStoredOpenId()
-    }, {
-      success: res => {
-        wx.setStorageSync('user_chatroom_id', res.data.data.pair_id)
-        console.log('getChatroomId():')
-        console.log(res.data.data)
         callback.success(res)
       }
     })

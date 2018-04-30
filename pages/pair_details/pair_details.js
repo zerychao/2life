@@ -5,12 +5,14 @@ var dummyData = require("../../utils/dummy_data.js")
 var request = require("../../utils/request.js")
 
 var getData = (userInfo) => {
+  console.log(util.parseMessageData(util.getStoredChatHistory()))
   return {
     userInfo: userInfo,
     hasUserInfo: true,
     diaryList: util.parseDiaryData.dateToDayWeekday(util.getStoredRecentHistory()),
     showPair: util.getStoredMatch(),
-    pair: util.getStoredMatchUser()
+    pair: util.getStoredMatchUser(),
+    mesArray: util.parseMessageData(util.getStoredChatHistory())
   }
 }
 
