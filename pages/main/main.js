@@ -105,11 +105,14 @@ Page({
     })
   },
   getUserInfo: function (e) {
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+    var that = this
+    wx.getUserInfo({
+      success: res2 => {
+        console.log('wx.getUserInfo():')
+        console.log(res2)
+        onUserInfoReady(that, res2)
+      }
     })
-    refresh(this)
   },
   contact: function () {
     wx.navigateTo({

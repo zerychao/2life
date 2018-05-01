@@ -22,7 +22,6 @@ var refresh = (that, res) => {
 Page({
   data: {
     userInfo: {},
-    hasUserInfo: false,
     system: 20
   },
   onLoad: function () {
