@@ -7,10 +7,7 @@ var request = require("../../utils/request.js")
 var getData = (userInfo) => {
   return {
     userInfo: userInfo,
-    hasUserInfo: true,
-    diaryList: util.parseDiaryData.dateToDayWeekday(util.getStoredRecentHistory()),
-    showPair: util.getStoredMatch(),
-    pair: util.getStoredMatchUser()
+    hasUserInfo: true
   }
 }
 
@@ -25,6 +22,31 @@ var refresh = (that) => {
   })
 }
 
+var onUserInfoReady = (that, res) => {
+  util.storeUserInfo(res.userInfo)
+  app.globalData.userInfo = res.userInfo
+  that.setData(getData(res.userInfo))
+  // 服务器存储 openId + userInfo
+  request.storeUserInfo({
+    success: res3 => {
+      app.globalData.isLogin = true
+      that.setData({
+        diaryList: util.parseDiaryData.dateToDayWeekday(util.getStoredRecentHistory()),
+        showPair: util.getStoredMatch(),
+        pair: util.getStoredMatchUser()
+      })
+      onLoginComplete(that)
+    }
+  })
+}
+
+var onLoginComplete = that => {
+  app.globalData.isLogin = true
+  refresh(that)
+  util.showUI.hideLoggingInToast()
+  util.showUI.showLoggedInToast()
+}
+
 var order = ['red', 'yellow', 'blue', 'green', 'red']
 Page({
   data: {
@@ -37,28 +59,12 @@ Page({
     pair: util.getStoredMatchUser()
   },
   onLoad: function () {
-    if (util.getStoredUserInfo()) {
-      this.setData(getData(util.getStoredUserInfo()))
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData(getData(res.userInfo))
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData(getData(res.userInfo))
-        }
-      })
-    }
+    
   },
   onShow: function () {
     var that = this;
-    refresh(that)
     if (!app.globalData.isLogin) {
+      util.showUI.showLoggingInToast()
       // 登录
       wx.login({
         success: res => {
@@ -66,10 +72,22 @@ Page({
           console.log('loginCode: ' + res.code)
           request.sendLoginCode(res.code, {
             success: res1 => {
-              app.globalData.isLogin = true
-              refresh(that)
+              console.log('openId ready.')
+              wx.getUserInfo({
+                success: res2 => {
+                  console.log('wx.getUserInfo():')
+                  console.log(res2)
+                  onUserInfoReady(that, res2)
+                }
+              })
             }
           })
+        }
+      })
+    } else {
+      request.getFullUserInfo({
+        success: res => {
+          refresh(that)
         }
       })
     }
@@ -87,7 +105,6 @@ Page({
     })
   },
   getUserInfo: function (e) {
-    wx.setStorageSync('user_userInfo', e.detail.userInfo)
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true

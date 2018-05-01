@@ -95,10 +95,16 @@ module.exports = {
         util.storeUserIds(res.data.data)
         console.log('sendLoginCode():')
         console.log(res.data.data)
-        storeUserInfo(callback)
+        if (callback && callback.success) {
+          callback.success(res)
+        }
       }
     })
   },
+
+  storeUserInfo: storeUserInfo,
+
+  getFullUserInfo: getFullUserInfo,
 
   saveNewDiary: (callback) => {
     doRequest('POST', 'emotion', util.getStoredEditingDiary(), {

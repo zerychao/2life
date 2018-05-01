@@ -150,7 +150,7 @@ module.exports = {
     // wx.removeStorageSync('main_editing_diary_id')
     // wx.removeStorageSync('main_editing_diary_title')
     // wx.removeStorageSync('main_editing_diary_text')
-    getApp().globalData.editingDiary.diaryId = ''
+    getApp().globalData.editingDiary.diaryId = -1
     getApp().globalData.editingDiary.title = ''
     getApp().globalData.editingDiary.text = ''
   },
@@ -239,6 +239,24 @@ module.exports = {
   },
 
   showUI: {
+
+    showLoggingInToast: callback => {
+      wx.showLoading({
+        title: "Logging in..."
+      })
+    },
+
+    hideLoggingInToast: () => {
+      wx.hideLoading()
+    },
+
+    showLoggedInToast: callback => {
+      wx.showToast({
+        title: 'Logged in',
+        icon: 'success',
+        duration: 2000
+      })
+    },
 
     showDeleteConfirm: callback => {
       wx.showModal({

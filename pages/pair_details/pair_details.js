@@ -20,6 +20,12 @@ var refresh = that => {
   that.setData({
     mesArray: util.parseMessageData(util.getStoredChatHistory()) 
   });
+  console.log('util.getStoredChatHistory().length = ' + util.getStoredChatHistory().length)
+  console.log('that.data.lastLength = ' + that.data.lastLength)
+  if (util.getStoredChatHistory().length != that.data.lastLength) {
+    scrollToBottom(that)
+    that.data.lastLength = util.getStoredChatHistory().length
+  }
 }
 
 var scrollToBottom = that => {
@@ -42,7 +48,6 @@ var sendMessage = (newMes, that) => {
     request.sendMessageViaHttp(newMes, {
       success: res => {
         refresh(that)
-        scrollToBottom(that)
       }
     })
   }
@@ -59,19 +64,21 @@ Page({
     system: 30,
     showModalStatus: false,
     showPair: util.getStoredMatch(),
-    pair: util.getStoredMatchUser()
+    pair: util.getStoredMatchUser(),
+    lastLength: 0
   },
 
   onLoad: function () {
     this.setData(getData(util.getStoredUserInfo()))
-    timer = setInterval(() => {
+    var timerAction = () => {
       request.getChatHistory(util.getStoredChatroomId(), {
         success: res => {
           refresh(this)
         }
       })
-    }, 5000)
-    scrollToBottom(this)
+    }
+    timerAction()
+    timer = setInterval(timerAction, 5000)
   },
   onShow: function () {
     var that = this;
