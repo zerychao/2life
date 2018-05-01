@@ -27,7 +27,7 @@ var storeUserInfo = callback => {
       console.log('storeUserInfo():')
       console.log(res.data)
       if (res.data.status === 'success') {
-        getFullUserInfo()
+        getFullUserInfo(callback)
         console.log('Login complete.')
       }
     }
@@ -39,9 +39,9 @@ var getFullUserInfo = (callback) => {
     openId: util.getStoredOpenId()
   }, {
     success: res => {
-      wx.setStorageSync('user_userInfo', res.data.data.user)
-      wx.setStorageSync('user_recent_history', res.data.data.diaries)
-      wx.setStorageSync('user_match', res.data.data.match)
+      util.storeUserInfo(res.data.data.user)
+      util.storeRecentHistory(res.data.data.diaries)
+      util.storeMatch(res.data.data.match)
       console.log('getFullUserInfo():')
       console.log(res.data.data)
       if (res.data.data.match) {
@@ -59,7 +59,7 @@ var getChatroomId = callback => {
     openId: util.getStoredOpenId()
   }, {
       success: res => {
-        wx.setStorageSync('user_chatroom_id', res.data.data.pair_id)
+        util.storeChatroomId(res.data.data.pair_id)
         console.log('getChatroomId():')
         console.log(res.data.data)
         if (callback && callback.success) {
@@ -75,7 +75,7 @@ var getChatHistory = (pair_id, callback) => {
     pair_id: pair_id 
   }, {
     success: res => {
-      wx.setStorageSync('user_chat_history', res.data.data.messages)
+      util.storeChatHistory(res.data.data.messages)
       console.log('getChatHistory():')
       console.log(res.data.data)
       if (callback && callback.success) {
@@ -87,15 +87,15 @@ var getChatHistory = (pair_id, callback) => {
 
 module.exports = {
 
-  sendLoginCode: loginCode => {
+  sendLoginCode: (loginCode, callback) => {
     doRequest('GET', 'get_openId_action', { 
       js_code: loginCode 
     }, {
       success: res => { 
-        wx.setStorageSync('user_ids', res.data.data)
+        util.storeUserIds(res.data.data)
         console.log('sendLoginCode():')
         console.log(res.data.data)
-        storeUserInfo()
+        storeUserInfo(callback)
       }
     })
   },
@@ -103,7 +103,7 @@ module.exports = {
   saveNewDiary: (callback) => {
     doRequest('POST', 'emotion', util.getStoredEditingDiary(), {
       success: res => {
-        wx.setStorageSync('user_match', res.data.data.match)
+        util.storeMatch(res.data.data.match)
         console.log('saveDiary():')
         console.log(res.data.data)
         getFullUserInfo(callback)
@@ -157,7 +157,7 @@ module.exports = {
       openId: util.getStoredOpenId()
     }, {
       success: (res) => {
-        wx.setStorageSync('user_all_history', res.data.data.diaries)
+        util.storeAllHistory(res.data.data.diaries)
         console.log('getAllHistory():')
         console.log(res.data.data)
       }
@@ -169,7 +169,7 @@ module.exports = {
       openId: util.getStoredOpenId()
     }, {
       success: res => {
-        wx.setStorageSync('user_match', '')
+        util.storeMatch('')
         console.log('unpair():')
         console.log(res.data)
         callback.success(res)

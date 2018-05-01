@@ -18,8 +18,8 @@ var refresh = (that) => {
   that.setData({
     diaryList: util.parseDiaryData.dateToDayWeekday(util.getStoredRecentHistory()),
     save: true,
-    diaryTitle: wx.getStorageSync('main_editing_diary_title'),
-    diaryText: wx.getStorageSync('main_editing_diary_text'),
+    diaryTitle: util.getStoredEditingDiaryTitle(),
+    diaryText: util.getStoredEditingDiaryText(),
     showPair: util.getStoredMatch(),
     pair: util.getStoredMatchUser()
   })
@@ -57,6 +57,22 @@ Page({
   },
   onShow: function () {
     var that = this;
+    refresh(that)
+    if (!app.globalData.isLogin) {
+      // 登录
+      wx.login({
+        success: res => {
+          // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          console.log('loginCode: ' + res.code)
+          request.sendLoginCode(res.code, {
+            success: res1 => {
+              app.globalData.isLogin = true
+              refresh(that)
+            }
+          })
+        }
+      })
+    }
     wx.getSystemInfo({
       success: function (res) {
         console.log(res.system)
@@ -69,7 +85,6 @@ Page({
         }
       }
     })
-    refresh(this)
   },
   getUserInfo: function (e) {
     wx.setStorageSync('user_userInfo', e.detail.userInfo)
@@ -85,10 +100,10 @@ Page({
     })
   },
   updateDiaryTitle: function (e) {
-    wx.setStorageSync('main_editing_diary_title', e.detail.value)
+    util.storeEditingDiaryTitle(e.detail.value)
   },
   updateDiaryText: function (e) {
-    wx.setStorageSync('main_editing_diary_text', e.detail.value)
+    util.storeEditingDiaryText(e.detail.value)
   },
   savediary: function () {
     var storedEditingDiary = util.getStoredEditingDiary()
@@ -98,7 +113,7 @@ Page({
       this.setData({
         save: false
       })
-      var nowEditingId = wx.getStorageSync('main_editing_diary_id')
+      var nowEditingId = util.getStoredEditingDiaryId()
       if (nowEditingId == '' || nowEditingId == -1) {
         request.saveNewDiary({
           success: res => {
@@ -123,9 +138,9 @@ Page({
     var diary_id = e.currentTarget.dataset.diaryid
     request.getFullDiary(diary_id, {
       success: (res) => {
-        wx.setStorageSync('main_editing_diary_id', diary_id)
-        wx.setStorageSync('main_editing_diary_title', res.data.data.diary.title)
-        wx.setStorageSync('main_editing_diary_text', res.data.data.diary.content)
+        util.storeEditingDiaryId(diary_id)
+        util.storeEditingDiaryTitle(res.data.data.diary.title)
+        util.storeEditingDiaryText(res.data.data.diary.content)
         this.setData({
           save: true,
           diaryTitle: res.data.data.diary.title,

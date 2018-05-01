@@ -56,24 +56,76 @@ module.exports = {
 
   getStoredUserInfo: getStoredUserInfo,
 
+  storeUserIds: (userIds) => {
+    wx.setStorageSync('user_ids', userIds)
+  },
+
+  storeUserInfo: (userInfo) => {
+    wx.setStorageSync('user_userInfo', userInfo)
+  },
+
   getStoredRecentHistory: () => {
     return wx.getStorageSync('user_recent_history')
+  },
+
+  storeRecentHistory: (diaries) => {
+    wx.setStorageSync('user_recent_history', diaries)
   },
 
   getStoredAllHistory: () => {
     return wx.getStorageSync('user_all_history')
   },
 
+  storeAllHistory: diaries => {
+    wx.setStorageSync('user_all_history', diaries)
+  },
+
   getStoredEditingDiary: () => {
     return {
       openId: getStoredOpenId(),
-      title: wx.getStorageSync('main_editing_diary_title'),
-      content: wx.getStorageSync('main_editing_diary_text')
+      // title: wx.getStorageSync('main_editing_diary_title'),
+      title: getApp().globalData.editingDiary.title,
+      // content: wx.getStorageSync('main_editing_diary_text')
+      content: getApp().globalData.editingDiary.text
     }
+  },
+
+  getStoredEditingDiaryId: () => {
+    // return wx.getStorageSync('main_editing_diary_id')
+    return getApp().globalData.editingDiary.diaryId
+  },
+
+  getStoredEditingDiaryTitle: () => {
+    // return wx.getStorageSync('main_editing_diary_title')
+    return getApp().globalData.editingDiary.title
+  },
+
+  getStoredEditingDiaryText: () => {
+    // return wx.getStorageSync('main_editing_diary_text')
+    return getApp().globalData.editingDiary.text
+  },
+
+  storeEditingDiaryId: (id) => {
+    // wx.setStorageSync('main_editing_diary_id', id)
+    getApp().globalData.editingDiary.diaryId = id
+  },
+
+  storeEditingDiaryTitle: (title) => {
+    // wx.setStorageSync('main_editing_diary_title', title)
+    getApp().globalData.editingDiary.title = title
+  },
+
+  storeEditingDiaryText: (text) => {
+    // wx.setStorageSync('main_editing_diary_text', text)
+    getApp().globalData.editingDiary.text = text
   },
 
   getStoredMatch: () => {
     return wx.getStorageSync('user_match')
+  },
+
+  storeMatch: match => {
+    wx.setStorageSync('user_match', match)
   },
 
   getStoredMatchUser: getStoredMatchUser,
@@ -82,14 +134,25 @@ module.exports = {
     return wx.getStorageSync('user_chatroom_id')
   },
 
+  storeChatroomId: chatroomId => {
+    wx.setStorageSync('user_chatroom_id', chatroomId)
+  },
+
   getStoredChatHistory : () => {
     return wx.getStorageSync('user_chat_history')
   },
 
+  storeChatHistory: (messages) => {
+    wx.setStorageSync('user_chat_history', messages)
+  },
+
   removeInvalidStorage: () => {
-    wx.removeStorageSync('main_editing_diary_id')
-    wx.removeStorageSync('main_editing_diary_title')
-    wx.removeStorageSync('main_editing_diary_text')
+    // wx.removeStorageSync('main_editing_diary_id')
+    // wx.removeStorageSync('main_editing_diary_title')
+    // wx.removeStorageSync('main_editing_diary_text')
+    getApp().globalData.editingDiary.diaryId = ''
+    getApp().globalData.editingDiary.title = ''
+    getApp().globalData.editingDiary.text = ''
   },
 
   formatTime: date => {
